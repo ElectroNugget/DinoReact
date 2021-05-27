@@ -4,7 +4,7 @@
  */
 import React from "react";
 //TODO: Hook up this carousel.
-import Carousel from "./Carousel"
+import Carousel from "./Carousel";
 // Image imports seem to work best for now, bit weird.
 import image01 from "../images/specials/Main001.jpg";
 import image02 from "../images/specials/Main002.jpg";
@@ -17,6 +17,29 @@ import discounted from "../images/specials/DiscountedDinos.png";
 type FrontPageProps = {
   message: string;
 };
+
+//Trying to get the customerName here.
+//CustomerId needs to be part of the global state.
+let customerId: number = 1;
+let customerName: string = "";
+
+//Successfully gets customer name. :)
+async function getUserName() {
+  await fetch(`http://localhost:8000/customers/${customerId}`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json;charset=utf-8" },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      customerName = data.customerName;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+getUserName();
 
 const FrontPage = ({ message }: FrontPageProps): JSX.Element => (
   <div>
@@ -90,7 +113,9 @@ const FrontPage = ({ message }: FrontPageProps): JSX.Element => (
     </div>
     {/* removed this from the below container style="text-align:center" */}
     <div className="container">
-      <h3 id="message">Hello, Guest! Welcome to DinoStore!</h3>
+      <h3 id="message">
+        Hello, {customerName ? customerName : "Guest"}! Welcome to DinoStore!
+      </h3>
     </div>
     {/* TODO: Want to make these cards into components as well. */}
     <div className="container">
