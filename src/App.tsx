@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+/**
+ * Our main launchpad for the whole application!.
+ * TODO: How does React-Router tie into all this???
+ * TODO: Figure out how to make Dinosite into a SPA.
+ * BJORN: React single page application using Typescript implementing a JavaScript API using Express, as it's OWN NODE.
+ */
+// @ts-check
+import React from "react";
+import NavBar from "./components/NavBar";
+import FrontPage from "./components/FrontPage";
+import CartPage from "./components/CartPage";
+import LoginPage from "./components/LoginPage";
+import Footer from "./components/Footer";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-function App() {
-  return (
+const App = (): JSX.Element => (
+  <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar />
+      <Switch>
+        <Route path="/" exact component={FrontPage} />
+        <Route path="/cart" component={CartPage} />
+        <Route path="/login" component={LoginPage} />
+      </Switch>
+      <Footer />
     </div>
-  );
-}
+  </Router>
+);
 
 export default App;
