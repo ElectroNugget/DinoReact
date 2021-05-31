@@ -6,14 +6,11 @@ import React from "react";
 //TODO: Hook up this carousel.
 import Carousel from "./Carousel";
 import Headline from "./Headline";
+import LargeCard from "./LargeCard";
 // Image imports seem to work best for now, bit weird.
 import image01 from "../images/specials/Main001.jpg";
 import image02 from "../images/specials/Main002.jpg";
 import image03 from "../images/specials/Main003.jpg";
-import lightning from "../images/specials/LightningDeal.png";
-import bestseller from "../images/specials/BestSeller.png";
-import featured from "../images/specials/FeaturedDinosaur.png";
-import discounted from "../images/specials/DiscountedDinos.png";
 
 const FrontPage = (): JSX.Element => (
   <div>
@@ -85,93 +82,39 @@ const FrontPage = (): JSX.Element => (
         </a>
       </div>
     </div>
-    {/* removed this from the below container style="text-align:center" */}
     <div className="container">
-      <Headline message="! Welcome to DinoStore!"/>
+      <Headline message="! Welcome to DinoStore!" />
     </div>
-    {/* TODO: Want to make these cards into components as well. */}
     <div className="container">
-      <div className="row row-cols-1 row-cols-md-2">
-        <div className="col mb-4">
-          <div className="card">
-            <a href="prodDisplay.html?productKey=size&productValue=Small">
-              <img
-                src={discounted}
-                className="card-img-top"
-                alt="Small dinosaurs"
-              />
-            </a>
-            <div className="card-body">
-              <h5 className="card-title">
-                <i className="fas fa-tags"></i> Discounted Dinos
-              </h5>
-              <p className="card-text">
-                Check out our collection of small dinosaurs!
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="col mb-4">
-          <div className="card">
-            <a href="prodDescription.html?dinosaur=Stegosaurus">
-              <img src={bestseller} className="card-img-top" alt="" />
-            </a>
-            <div className="card-body">
-              <h5 className="card-title">
-                <i className="fas fa-chart-line"></i> Best Sellers
-              </h5>
-              <p className="card-text">
-                Stegosaurus never ceases to be a family favourite.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="col mb-4">
-          <div className="card">
-            <a href="prodDescription.html?dinosaur=Brachiosaurus">
-              <img
-                src={featured}
-                className="card-img-top"
-                alt="InGen's new Brachiosaurus"
-              />
-            </a>
-            <div className="card-body">
-              <h5 className="card-title">
-                <i className="fas fa-medal"></i> Featured Dinosaur
-              </h5>
-              <p className="card-text">
-                InGen has just made their new Brachiosaurus model widely
-                available.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="col mb-4">
-          <div className="card">
-            <a href="prodDescription.html?dinosaur=Pteranodon">
-              <img
-                src={lightning}
-                className="card-img-top"
-                alt="Pteranodon on sale!"
-              />
-            </a>
-            <div className="card-body">
-              <h5 className="card-title">
-                <i className="fas fa-bolt"></i>
-                <i className="fas fa-dollar-sign"></i> Lightning Deal
-                <i className="fas fa-dollar-sign">
-                  {" "}
-                  <i className="fas fa-bolt"></i>
-                </i>
-              </h5>
-              <p className="card-text">
-                Pteranodons are 50% off for the next 24hrs! Don't miss it!
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <LargeCard
+        title="Discounted Dinos"
+        description="Check out our collection of small dinosaurs!"
+        imgUrl="/images/specials/DiscountedDinos.png"
+        iconUrl="fas fa-tags"
+      />
+
+      <LargeCard
+        title="Best Sellers"
+        description="Stegosaurus never ceases to be a family favourite"
+        imgUrl="/images/specials/BestSeller.png"
+        iconUrl="fas fa-chart-line"
+      />
+
+      <LargeCard
+        title="Featured Dinosaur"
+        description="InGen has just made their new Brachiosaurus model widely available."
+        imgUrl="/images/specials/FeaturedDinosaur.png"
+        iconUrl="fas fa-medal"
+      />
+
+      <LargeCard
+        title="Lightning Deal"
+        description="Pteranodons are 50% off for the next 24hrs! Don't miss it!"
+        imgUrl="/images/specials/LightningDeal.png"
+        iconUrl="fas fa-dollar-sign"
+      />
     </div>
   </div>
 );
+
 export default FrontPage;
