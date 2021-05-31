@@ -4,7 +4,7 @@
  * TODO: How does React-Router tie into all this???
  */
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const NavBar = (): JSX.Element => (
   <nav className="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
@@ -13,6 +13,7 @@ const NavBar = (): JSX.Element => (
         <i className="fas fa-dna"></i> DinoStore
       </a>
     </Link>
+
     <ul className="navbar-nav mr-auto">
       <Link to="/">
         <li className="nav-item">
@@ -21,6 +22,7 @@ const NavBar = (): JSX.Element => (
           </a>
         </li>
       </Link>
+
       <li className="nav-item dropdown">
         <a
           className="nav-link dropdown-toggle"
@@ -34,12 +36,18 @@ const NavBar = (): JSX.Element => (
           <i className="fas fa-dollar-sign"></i> Buy Dinosaurs
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a
-            className="dropdown-item"
-            href="prodDisplay.html?productKey=productName&productValue=."
+          <Link
+            to={{
+              pathname: "/all",
+              state:{
+                categoryKey: "all",
+                categoryValue: "all"
+              }
+            }}
           >
-            All Dinosaurs
-          </a>
+            <a className="dropdown-item">All Dinosaurs</a>
+          </Link>
+
           <div className="dropdown-divider"></div>
           <h6 className="dropdown-header">
             <i className="fas fa-weight-hanging"></i> Size
