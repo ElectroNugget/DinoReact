@@ -21,9 +21,10 @@ function FrontPage(): JSX.Element {
       <div className="container">
         {/* TODO: Ask bjorn about KEY bug */}
         <div className="row row-cols-1 row-cols-md-2">
-          {salesCards.map((card) => (
+          {salesCards.map((card, index) => (
             <div className="col mb-4">
               <LargeCard
+                key={index}
                 title={card.title}
                 description={card.description}
                 imgUrl={card.imgUrl}

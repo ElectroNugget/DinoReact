@@ -4,8 +4,6 @@
  * TODO: Need to figure out how to get all the deets from the API.
  * TODO: Find a better way to handle adding objects to cart and pricing stuff...
  */
-import React from "react";
-
 type ProductInfoProps = {
   description: string;
   era: string;

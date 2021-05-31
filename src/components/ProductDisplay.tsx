@@ -1,10 +1,7 @@
 /**
  * Meant to handle any large display of product cards based on a query.
- * TODO: Used to be generated mostly by inject functions and queries. Need to piece it back together.
+ * TODO: Hook up API
  */
-// import React from "react";
-// import ProductCard from "./ProductCard";
-// import Jumbotron from "./Jumbotron";
 import SmallCard from "./SmallCard";
 import Jumbotron from "./Jumbotron";
 import { useParams } from "react-router";
@@ -26,13 +23,10 @@ function ProductDisplay(): JSX.Element {
       <Jumbotron categoryValue={categoryValue} />
       <div className="cardDisplay">
         <div className="container text-center">
-          <h2 id="CategoryTitle">{categoryKey}</h2>
-          <p id="CategoryDescription">{categoryValue}</p>
-
           <div className="card-deck">
-            {/* FIXME: Key bug */}
-            {dinoArray.map((dino) => (
+            {dinoArray.map((dino, index) => (
               <SmallCard
+                key={index}
                 productName={dino.productName}
                 manufacturer={dino.manufacturer}
                 price={dino.price}

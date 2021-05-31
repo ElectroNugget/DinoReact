@@ -60,21 +60,21 @@ export const jumbotronArray = [
   },
   {
     displayType: "ingen",
-    title: '<i class="fas fa-dna"></i> InGen Biotech',
+    title: 'InGen Biotech',
     bannerText:
       "The most widely trusted genetic engineering firm on the planet, we have InGen to thank for many of the classic dinosaurs we have today. Lets just not talk about the Jurassic Park incident.",
     bannerImage: "CyberEye.jpg",
   },
   {
     displayType: "biosyn",
-    title: '<i class="fab fa-gg-circle"></i> Biosyn Genetics',
+    title: 'Biosyn Genetics',
     bannerText:
       "Although their dinosaurs may not be as iconic as InGen, Biosyn fills an important space in the market, bringing competitive prices and lesser-known species to collectors worldwide.",
     bannerImage: "Biosyn.jpg",
   },
   {
     displayType: "regenesis",
-    title: '<i class="fab fa-red-river"></i> Regenesis Technologies',
+    title: 'Regenesis Technologies',
     bannerText:
       "An up-and-coming brand focusing on new genetic splicing techniques to deliver new and innovative species for our most avid customers.",
     bannerImage: "FLOW.jpg",

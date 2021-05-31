@@ -1,4 +1,6 @@
-import React from "react";
+/**
+ * Renders a small card for display on product display pages.
+ */
 import { Link } from "react-router-dom";
 
 type SmallCardProps = {
@@ -15,12 +17,10 @@ function SmallCard({
   imgUrl,
 }: SmallCardProps): JSX.Element {
   return (
-    //  style="float:left; margin-bottom:3em"
-    <div className="col-sm-4">
-      {/*  style="width: 18rem;" */}
-      <div className="card bg-dark text-white">
+    <div className="col-sm-4" style={{float:"left", marginBottom:"3em"}}>
+      <div className="card bg-dark text-white" style={{width: "18rem"}}>
         <a className="btn btn-light">
-          <img className="card-img-top" src={imgUrl} alt="Card image cap" />
+          <img className="card-img-top" src={imgUrl} alt={productName} />
         </a>
         <div className="card-body">
           <Link to="/">
