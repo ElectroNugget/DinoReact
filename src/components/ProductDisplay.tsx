@@ -5,6 +5,7 @@
 // import React from "react";
 // import ProductCard from "./ProductCard";
 // import Jumbotron from "./Jumbotron";
+import SmallCard from "./SmallCard";
 import { useLocation } from "react-router";
 
 let cardDeck: object[] = [];
@@ -35,8 +36,8 @@ function ProductDisplay(): JSX.Element {
         <h2 id="CategoryTitle">{categoryKey}</h2>
         <p id="CategoryDescription">{categoryValue}</p>
 
-        {/* Need to map a bunch of cards into this div. */}
         <div className="card-deck">
+          {/* Need to map a bunch of cards into this div. */}
           <div id="injectCards">{cardDeck}</div>
         </div>
       </div>

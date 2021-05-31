@@ -3,8 +3,7 @@
  * TODO: Could probably afford to be broken down a little.
  * TODO: How does React-Router tie into all this???
  */
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const NavBar = (): JSX.Element => (
   <nav className="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
@@ -26,7 +25,6 @@ const NavBar = (): JSX.Element => (
       <li className="nav-item dropdown">
         <a
           className="nav-link dropdown-toggle"
-          href="#"
           id="navbarDropdown"
           role="button"
           data-toggle="dropdown"
@@ -39,10 +37,10 @@ const NavBar = (): JSX.Element => (
           <Link
             to={{
               pathname: "/all",
-              state:{
+              state: {
                 categoryKey: "all",
-                categoryValue: "all"
-              }
+                categoryValue: "all",
+              },
             }}
           >
             <a className="dropdown-item">All Dinosaurs</a>
@@ -52,62 +50,110 @@ const NavBar = (): JSX.Element => (
           <h6 className="dropdown-header">
             <i className="fas fa-weight-hanging"></i> Size
           </h6>
-          <a
-            className="dropdown-item"
-            href="prodDisplay.html?productKey=size&productValue=Small"
+          <Link
+            to={{
+              pathname: "/size/small",
+              state: {
+                categoryKey: "size",
+                categoryValue: "small",
+              },
+            }}
           >
-            Small
-          </a>
-          <a
-            className="dropdown-item"
-            href="prodDisplay.html?productKey=size&productValue=Medium"
+            <a className="dropdown-item">Small</a>
+          </Link>
+          <Link
+            to={{
+              pathname: "/size/medium",
+              state: {
+                categoryKey: "size",
+                categoryValue: "medium",
+              },
+            }}
           >
-            Medium
-          </a>
-          <a
-            className="dropdown-item"
-            href="prodDisplay.html?productKey=size&productValue=Large"
+            <a className="dropdown-item">Medium</a>
+          </Link>
+          <Link
+            to={{
+              pathname: "/size/large",
+              state: {
+                categoryKey: "size",
+                categoryValue: "large",
+              },
+            }}
           >
-            Large
-          </a>
+            <a className="dropdown-item">Large</a>
+          </Link>
           <div className="dropdown-divider"></div>
           <h6 className="dropdown-header">
             <i className="fas fa-drumstick-bite"></i> Diet
           </h6>
-          <a
-            className="dropdown-item"
-            href="prodDisplay.html?productKey=diet&productValue=Carnivore"
+          <Link
+            to={{
+              pathname: "/diet/carnivores",
+              state: {
+                categoryKey: "diet",
+                categoryValue: "carnivore",
+              },
+            }}
           >
-            Carnivores
-          </a>
-          <a
-            className="dropdown-item"
-            href="prodDisplay.html?productKey=diet&productValue=Herbivore"
+            <a
+              className="dropdown-item"
+            >
+              Carnivores
+            </a>
+          </Link>
+          <Link
+            to={{
+              pathname: "/diet/herbivores",
+              state: {
+                categoryKey: "diet",
+                categoryValue: "herbivore",
+              },
+            }}
           >
-            Herbivores
-          </a>
+            <a
+              className="dropdown-item"
+            >
+              Herbivores
+            </a>
+          </Link>
           <div className="dropdown-divider"></div>
           <h6 className="dropdown-header">
             <i className="fas fa-industry"></i> Manufacturer
           </h6>
-          <a
-            className="dropdown-item"
-            href="prodDisplay.html?productKey=manufacturer&productValue=InGen"
+          <Link
+            to={{
+              pathname: "/manufacturer/ingen",
+              state: {
+                categoryKey: "manufacturer",
+                categoryValue: "ingen",
+              },
+            }}
           >
-            InGen
-          </a>
-          <a
-            className="dropdown-item"
-            href="prodDisplay.html?productKey=manufacturer&productValue=Biosyn"
+            <a className="dropdown-item">InGen</a>
+          </Link>
+          <Link
+            to={{
+              pathname: "/manufacturer/biosyn",
+              state: {
+                categoryKey: "manufacturer",
+                categoryValue: "biosyn",
+              },
+            }}
           >
-            Biosyn
-          </a>
-          <a
-            className="dropdown-item"
-            href="prodDisplay.html?productKey=manufacturer&productValue=Regenesis"
+            <a className="dropdown-item">Biosyn</a>
+          </Link>
+          <Link
+            to={{
+              pathname: "/manufacturer/regenesis",
+              state: {
+                categoryKey: "manufacturer",
+                categoryValue: "regenesis",
+              },
+            }}
           >
-            Regenesis
-          </a>
+            <a className="dropdown-item">Regenesis</a>
+          </Link>
         </div>
       </li>
     </ul>
