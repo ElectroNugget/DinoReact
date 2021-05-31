@@ -5,16 +5,15 @@
 import React from "react";
 import Headline from "./Headline";
 
-type CartPageProps = {
-  message: string;
-};
+const message: string = ", here's your cart.";
 
-const CartPage = ({ message }: CartPageProps): JSX.Element => (
+
+const CartPage = (): JSX.Element => (
   <div className="container">
     <div className="card">
       <div className="card-header">Your Cart</div>
       <div id="cartBox" className="container text-center">
-        <Headline message=", here's your cart"/>
+        <Headline message={message}/>
         <p>Free shipping for dino orders over 100 tonnes!</p>
 
         <div className="card-body">

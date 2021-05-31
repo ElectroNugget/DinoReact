@@ -5,18 +5,16 @@
 import React from "react";
 import Headline from "./Headline"
 
-type LoginPageProps = {
-  message: string;
-};
+const message: string = ", please register and provide your name here.";
 
-const LoginPage = ({ message }: LoginPageProps): JSX.Element => (
+const LoginPage = (): JSX.Element => (
   <div className="container">
     <div className="card">
       <div className="card-header">Login</div>
       <main className="form-signin">
         <div className="container text-center">
           <div className="card-body">
-            <Headline message=", please register and provide your name here."/>
+            <Headline message={message}/>
             <br />
             <div className="form-group">
               <input

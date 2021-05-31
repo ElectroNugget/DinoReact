@@ -9,7 +9,7 @@ import Headline from "./Headline";
 import LargeCard from "./LargeCard";
 import { salesCards } from "../storage/salestorage";
 
-let message: string = "! Welcome to DinoStore!";
+const message: string = "! Welcome to DinoStore!";
 
 function FrontPage(): JSX.Element {
   return (

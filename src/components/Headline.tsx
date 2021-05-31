@@ -29,7 +29,7 @@ function Headline({ message }: HeadlineProps): JSX.Element {
   return (
     <div>
       <h3>
-        Hello, {customerName? customerName : "Guesty"}{message}
+        Hello, {customerName? customerName : "Guest"}{message}
       </h3>
     </div>
   );
