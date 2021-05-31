@@ -9,25 +9,29 @@ import Headline from "./Headline";
 import LargeCard from "./LargeCard";
 import { salesCards } from "../storage/salestorage";
 
-let message: string = "! Welcome to DinoStore!"
+let message: string = "! Welcome to DinoStore!";
 
 const FrontPage = (): JSX.Element => (
   <div>
     <FrontPageCarousel />
     <div className="container">
-      <Headline message={message}/>
+      <Headline message={message} />
     </div>
     <div className="container">
       {/* TODO: Ask bjorn about KEY bug */}
-      {salesCards.map((card) => (
-        <LargeCard
-          title={card.title}
-          description={card.description}
-          imgUrl={card.imgUrl}
-          imgAlt={card.imgAlt}
-          iconUrl={card.iconUrl}
-        />
-      ))}
+      <div className="row row-cols-1 row-cols-md-2">
+        {salesCards.map((card) => (
+          <div className="col mb-4">
+            <LargeCard
+              title={card.title}
+              description={card.description}
+              imgUrl={card.imgUrl}
+              imgAlt={card.imgAlt}
+              iconUrl={card.iconUrl}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 );
