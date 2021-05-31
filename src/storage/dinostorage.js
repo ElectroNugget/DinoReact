@@ -1,6 +1,5 @@
 //Storage for all my dinosaurs! Keeps all their data in one place.
-
-//TODO: For a future implementation, VERSION number would be a cool field for dinos.
+//DEPRECATED => Now stored in the API as a JSON file//
 export const dinoArray = [
     {
       productName: "Allosaurus",

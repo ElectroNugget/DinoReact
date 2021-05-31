@@ -25,6 +25,7 @@ const App = (): JSX.Element => (
       <Route path="/" exact component={FrontPage} />
       <Route path="/cart" component={CartPage} />
       <Route path="/login" component={LoginPage} />
+      <Route path="/products" exact component={ProductDisplay} />
       <Route
         path="/products/:categoryKey/:categoryValue"
         component={ProductDisplay}

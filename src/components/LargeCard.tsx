@@ -1,5 +1,3 @@
-import React from "react";
-
 type LargeCardProps = {
   title: string;
   description: string;
@@ -18,7 +16,7 @@ function LargeCard({
   return (
     <div className="card">
       {/* TODO: Fix these links */}
-      <a href="prodDisplay.html?productKey=size&productValue=Small">
+      <a>
         <img src={imgUrl} className="card-img-top" alt={imgAlt} />
       </a>
       <div className="card-body">

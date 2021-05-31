@@ -36,7 +36,7 @@ const NavBar = (): JSX.Element => (
         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
           {/* //FIXME: This path could be better, handle it somehow. */}
           <Link
-            to="/products/all/all"
+            to="/products"
           >
             <a className="dropdown-item">All Dinosaurs</a>
           </Link>
@@ -46,17 +46,17 @@ const NavBar = (): JSX.Element => (
             <i className="fas fa-weight-hanging"></i> Size
           </h6>
           <Link
-            to="/products/size/small"
+            to="/products/size/Small"
           >
             <a className="dropdown-item">Small</a>
           </Link>
           <Link
-            to="/products/size/medium"
+            to="/products/size/Medium"
           >
             <a className="dropdown-item">Medium</a>
           </Link>
           <Link
-            to="/products/size/large"
+            to="/products/size/Large"
           >
             <a className="dropdown-item">Large</a>
           </Link>
@@ -65,7 +65,7 @@ const NavBar = (): JSX.Element => (
             <i className="fas fa-drumstick-bite"></i> Diet
           </h6>
           <Link
-            to="/products/diet/carnivore"
+            to="/products/diet/Carnivore"
           >
             <a
               className="dropdown-item"
@@ -74,7 +74,7 @@ const NavBar = (): JSX.Element => (
             </a>
           </Link>
           <Link
-            to="/products/diet/herbivore"
+            to="/products/diet/Herbivore"
           >
             <a
               className="dropdown-item"
@@ -87,17 +87,17 @@ const NavBar = (): JSX.Element => (
             <i className="fas fa-industry"></i> Manufacturer
           </h6>
           <Link
-            to="/products/manufacturer/ingen"
+            to="/products/manufacturer/InGen"
           >
             <a className="dropdown-item">InGen</a>
           </Link>
           <Link
-            to="/products/manufacturer/biosyn"
+            to="/products/manufacturer/Biosyn"
           >
             <a className="dropdown-item">Biosyn</a>
           </Link>
           <Link
-            to= "/products/manufacturer/regenesis"
+            to= "/products/manufacturer/Regenesis"
           >
             <a className="dropdown-item">Regenesis</a>
           </Link>
