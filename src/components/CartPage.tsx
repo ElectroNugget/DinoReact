@@ -1,12 +1,9 @@
 /**
  * Displays the current cart and checkout options for the user.
- * TODO: Could probably afford to be broken down a little.
  */
-import React from "react";
 import Headline from "./Headline";
 
 const message: string = ", here's your cart.";
-
 
 const CartPage = (): JSX.Element => (
   <div className="container">

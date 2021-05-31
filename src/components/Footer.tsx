@@ -1,6 +1,6 @@
 /**
  * Fairly simple footer that displays on every page.
- * TODO: Need to figure out how to inject this with proper styling.
+ * TODO: Make sure it sits at the bottom properly on shorter pages.
  */
 import React from "react";
 import * as st from "./Footer.st"

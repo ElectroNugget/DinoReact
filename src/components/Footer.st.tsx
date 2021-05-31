@@ -1,5 +1,6 @@
-import styled from "styled-components";
 // Using styled components for the first time here...
+import styled from "styled-components";
+
 export const FooterBox = styled.footer`
   background-color: #343a40;
   color: #aaaaaa;
