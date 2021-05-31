@@ -5,6 +5,7 @@ export const salesCards = [
     imgUrl: "/images/specials/DiscountedDinos.png",
     imgAlt:"A group of small dinosaurs",
     iconUrl: "fas fa-tags",
+    linkUrl: "/products/size/Small"
   },
   {
     title: "Best Sellers",
@@ -12,6 +13,7 @@ export const salesCards = [
     imgUrl: "/images/specials/BestSeller.png",
     imgAlt:"A Stegosaurus",
     iconUrl: "fas fa-chart-line",
+    linkUrl: "/products/27"
   },
   {
     title: "Featured Dinosaur",
@@ -20,6 +22,7 @@ export const salesCards = [
     imgUrl: "/images/specials/FeaturedDinosaur.png",
     imgAlt:"A Brachiosaurus",
     iconUrl: "fas fa-medal",
+    linkUrl: "/products/5"
   },
   {
     title: "Lightning Deal",
@@ -27,5 +30,6 @@ export const salesCards = [
     imgUrl: "/images/specials/LightningDeal.png",
     imgAlt:"A Pteranodon",
     iconUrl: "fas fa-dollar-sign",
+    linkUrl: "/products/23"
   },
 ];

@@ -1,7 +1,11 @@
 /* Will act as global CSS for now... */
+*{
+  border: 1px solid red !important;
+}
+
 body {
-  background-color: whitesmoke !important;
-  background-image: url(../images/backgrounds/HexBG.jpg);
+  background-color: red !important;
+  background-image: url(/images/backgrounds/HexBG.jpg);
   background-repeat: no-repeat;
   background-size: auto;
   height: 100%;

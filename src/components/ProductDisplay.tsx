@@ -56,10 +56,7 @@ fetchedArray = [
 
 async function getProducts(key: string, value: string) {
   let fetchUrl:string;
-
-  console.log("key for fetch", key)
-  console.log("value for fetch", key)
-
+  
   if(key === undefined && value === undefined) {
     fetchUrl  = `http://localhost:8000/products`
   } else {
@@ -103,6 +100,7 @@ function ProductDisplay(): JSX.Element {
             {fetchedArray.map((dino, index) => (
               <SmallCard
                 key={index}
+                productId={dino.productId}
                 productName={dino.productName}
                 manufacturer={dino.manufacturer}
                 price={dino.price}

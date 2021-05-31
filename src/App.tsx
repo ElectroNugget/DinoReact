@@ -30,7 +30,7 @@ const App = (): JSX.Element => (
         path="/products/:categoryKey/:categoryValue"
         component={ProductDisplay}
       />
-      <Route path="/product/:productName" component={ProductPage} />
+      <Route path="/products/:id" component={ProductPage} />
     </Switch>
     <Footer />
   </Router>

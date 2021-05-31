@@ -4,6 +4,7 @@
 import { Link } from "react-router-dom";
 
 type SmallCardProps = {
+  productId: number;
   productName: string;
   manufacturer: string;
   price: number;
@@ -11,19 +12,20 @@ type SmallCardProps = {
 };
 
 function SmallCard({
+  productId,
   productName,
   manufacturer,
   price,
   imgUrl,
 }: SmallCardProps): JSX.Element {
   return (
-    <div className="col-sm-4" style={{float:"left", marginBottom:"3em"}}>
-      <div className="card bg-dark text-white" style={{width: "18rem"}}>
+    <div className="col-sm-4" style={{ float: "left", marginBottom: "3em" }}>
+      <div className="card bg-dark text-white" style={{ width: "18rem" }}>
         <a className="btn btn-light">
           <img className="card-img-top" src={imgUrl} alt={productName} />
         </a>
         <div className="card-body">
-          <Link to="/">
+          <Link to={`/products/${productId}`}>
             <h5 className="card-title">{productName}</h5>
           </Link>
           <h6 className="card-title">{manufacturer}</h6>

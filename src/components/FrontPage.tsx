@@ -1,9 +1,6 @@
 /**
  * The home page. Displays the current sales, username and a sweet carousel.
- * TODO: Absolutely needs to be broken down into more pieces
  */
-import React from "react";
-//TODO: Hook up this carousel.
 import FrontPageCarousel from "./FrontPageCarousel";
 import Headline from "./Headline";
 import LargeCard from "./LargeCard";
@@ -19,12 +16,12 @@ function FrontPage(): JSX.Element {
         <Headline message={message} />
       </div>
       <div className="container">
-        {/* TODO: Ask bjorn about KEY bug */}
         <div className="row row-cols-1 row-cols-md-2">
           {salesCards.map((card, index) => (
             <div className="col mb-4">
               <LargeCard
                 key={index}
+                linkUrl={card.linkUrl}
                 title={card.title}
                 description={card.description}
                 imgUrl={card.imgUrl}

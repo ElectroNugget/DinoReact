@@ -2,7 +2,6 @@
  * Displays the provided images and strings as a bootstrap carousel.
  * TODO: Could probably afford to be broken down a little.
  */
-import React from "react";
 import { frontPageCarousel } from "../storage/displaystorage";
 
 function FrontPageCarousel(): JSX.Element {

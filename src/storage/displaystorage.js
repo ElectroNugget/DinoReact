@@ -4,11 +4,13 @@ export const frontPageCarousel = [
     title: "Welcome to Dinostore!",
     description: "We promise our dinosaurs are safe (if handled carefully).",
     imgUrl: "/images/specials/Main001.jpg",
+
   },
   {
     title: "Coming Next Year!",
     description: "  Visit the DinoStore resort to see them all in a natural environment. Tickets available in 2022!",
     imgUrl: "/images/specials/Main002.jpg",
+
   },
   {
     title: "New Dinosaurs on the Horizon!",
