@@ -3,7 +3,6 @@
  * TODO: Used to be generated mostly by inject functions and queries. Need to piece it back together.
  */
  import React from "react";
- import Carousel from "./Carousel"
  import ProductInfo from "./ProductInfo"
  
  type ProductPageProps = {
@@ -13,7 +12,7 @@
 
  const ProductPage = ({productName, latinName}:ProductPageProps):JSX.Element => (
      <div className="container">
-       <Carousel message={""}/>
+       {/* <Carousel message={""}/> */}
        <div id="injectProductName">{productName} {latinName}</div>
        {/* <div
          id="injectProductInfo"

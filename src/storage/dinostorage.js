@@ -1,7 +1,7 @@
 //Storage for all my dinosaurs! Keeps all their data in one place.
 
 //TODO: For a future implementation, VERSION number would be a cool field for dinos.
-const dinoArray = [
+export const dinoArray = [
     {
       productName: "Allosaurus",
       latinName: "Different Lizard",

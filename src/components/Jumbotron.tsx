@@ -8,8 +8,8 @@ type JumbotronProps = {
   message: string;
 };
 
-const Jumbotron = ({ message }: JumbotronProps): JSX.Element => (
-  <div>Hello</div>
-);
+function Jumbotron({ message }: JumbotronProps): JSX.Element {
+  return <div>Hello</div>;
+}
 
 export default Jumbotron;
