@@ -5,6 +5,7 @@ type LargeCardProps = {
   description: string;
   iconUrl: string;
   imgUrl: string;
+  imgAlt: string,
 };
 
 function LargeCard({
@@ -12,12 +13,13 @@ function LargeCard({
   description,
   iconUrl,
   imgUrl,
+  imgAlt,
 }: LargeCardProps): JSX.Element {
   return (
     <div className="card">
       {/* TODO: Fix these links */}
       <a href="prodDisplay.html?productKey=size&productValue=Small">
-        <img src={imgUrl} className="card-img-top" alt="Small dinosaurs" />
+        <img src={imgUrl} className="card-img-top" alt={imgAlt} />
       </a>
       <div className="card-body">
         <h5 className="card-title">

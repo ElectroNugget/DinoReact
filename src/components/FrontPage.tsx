@@ -7,10 +7,15 @@ import React from "react";
 import Carousel from "./Carousel";
 import Headline from "./Headline";
 import LargeCard from "./LargeCard";
+import { salesCards } from "../storage/salestorage";
 // Image imports seem to work best for now, bit weird.
 import image01 from "../images/specials/Main001.jpg";
 import image02 from "../images/specials/Main002.jpg";
 import image03 from "../images/specials/Main003.jpg";
+
+function generateCards() {
+  salesCards.map(() => {});
+}
 
 const FrontPage = (): JSX.Element => (
   <div>
@@ -86,33 +91,16 @@ const FrontPage = (): JSX.Element => (
       <Headline message="! Welcome to DinoStore!" />
     </div>
     <div className="container">
-      <LargeCard
-        title="Discounted Dinos"
-        description="Check out our collection of small dinosaurs!"
-        imgUrl="/images/specials/DiscountedDinos.png"
-        iconUrl="fas fa-tags"
-      />
-
-      <LargeCard
-        title="Best Sellers"
-        description="Stegosaurus never ceases to be a family favourite"
-        imgUrl="/images/specials/BestSeller.png"
-        iconUrl="fas fa-chart-line"
-      />
-
-      <LargeCard
-        title="Featured Dinosaur"
-        description="InGen has just made their new Brachiosaurus model widely available."
-        imgUrl="/images/specials/FeaturedDinosaur.png"
-        iconUrl="fas fa-medal"
-      />
-
-      <LargeCard
-        title="Lightning Deal"
-        description="Pteranodons are 50% off for the next 24hrs! Don't miss it!"
-        imgUrl="/images/specials/LightningDeal.png"
-        iconUrl="fas fa-dollar-sign"
-      />
+      {/* TODO: Ask bjorn about KEY bug */}
+      {salesCards.map((card) => (
+        <LargeCard
+          title={card.title}
+          description={card.description}
+          imgUrl={card.imgUrl}
+          imgAlt={card.imgAlt}
+          iconUrl={card.iconUrl}
+        />
+      ))}
     </div>
   </div>
 );
