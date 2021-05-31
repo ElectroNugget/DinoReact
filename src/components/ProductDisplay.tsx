@@ -6,39 +6,40 @@
 // import ProductCard from "./ProductCard";
 // import Jumbotron from "./Jumbotron";
 import SmallCard from "./SmallCard";
-import { useLocation } from "react-router";
-
-let cardDeck: object[] = [];
-
-type passedProps = {
-  categoryKey: string;
-  categoryValue: string;
-};
-
-// async function getData() {
-
-
-// }
-
-// getData();
+import Jumbotron from "./Jumbotron";
+import { useParams } from "react-router";
+import { dinoArray } from "../storage/dinostorage";
 
 function ProductDisplay(): JSX.Element {
-  console.log("Hello productdisplay")
-  const location = useLocation();
-  const { categoryKey, categoryValue }: passedProps =
-  location.state as passedProps;
-  console.log("category key:", categoryKey);
-  console.log("category value:", categoryValue);
+  type params = {
+    categoryKey: string;
+    categoryValue: string;
+  };
+
+  let { categoryKey, categoryValue }: params = useParams();
+
+  console.log("proddisplay: category key:", categoryKey);
+  console.log("proddisplay: category value:", categoryValue);
 
   return (
-    <div className="cardDisplay">
-      <div className="container text-center">
-        <h2 id="CategoryTitle">{categoryKey}</h2>
-        <p id="CategoryDescription">{categoryValue}</p>
+    <div>
+      <Jumbotron categoryValue={categoryValue} />
+      <div className="cardDisplay">
+        <div className="container text-center">
+          <h2 id="CategoryTitle">{categoryKey}</h2>
+          <p id="CategoryDescription">{categoryValue}</p>
 
-        <div className="card-deck">
-          {/* Need to map a bunch of cards into this div. */}
-          <div id="injectCards">{cardDeck}</div>
+          <div className="card-deck">
+            {/* FIXME: Key bug */}
+            {dinoArray.map((dino) => (
+              <SmallCard
+                productName={dino.productName}
+                manufacturer={dino.manufacturer}
+                price={dino.price}
+                imgUrl={"/images/squarethumbnails/" + dino.productName + ".png"}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -34,14 +34,9 @@ const NavBar = (): JSX.Element => (
           <i className="fas fa-dollar-sign"></i> Buy Dinosaurs
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+          {/* //FIXME: This path could be better, handle it somehow. */}
           <Link
-            to={{
-              pathname: "/all",
-              state: {
-                categoryKey: "all",
-                categoryValue: "all",
-              },
-            }}
+            to="/products/all/all"
           >
             <a className="dropdown-item">All Dinosaurs</a>
           </Link>
@@ -51,35 +46,17 @@ const NavBar = (): JSX.Element => (
             <i className="fas fa-weight-hanging"></i> Size
           </h6>
           <Link
-            to={{
-              pathname: "/size/small",
-              state: {
-                categoryKey: "size",
-                categoryValue: "small",
-              },
-            }}
+            to="/products/size/small"
           >
             <a className="dropdown-item">Small</a>
           </Link>
           <Link
-            to={{
-              pathname: "/size/medium",
-              state: {
-                categoryKey: "size",
-                categoryValue: "medium",
-              },
-            }}
+            to="/products/size/medium"
           >
             <a className="dropdown-item">Medium</a>
           </Link>
           <Link
-            to={{
-              pathname: "/size/large",
-              state: {
-                categoryKey: "size",
-                categoryValue: "large",
-              },
-            }}
+            to="/products/size/large"
           >
             <a className="dropdown-item">Large</a>
           </Link>
@@ -88,13 +65,7 @@ const NavBar = (): JSX.Element => (
             <i className="fas fa-drumstick-bite"></i> Diet
           </h6>
           <Link
-            to={{
-              pathname: "/diet/carnivores",
-              state: {
-                categoryKey: "diet",
-                categoryValue: "carnivore",
-              },
-            }}
+            to="/products/diet/carnivore"
           >
             <a
               className="dropdown-item"
@@ -103,13 +74,7 @@ const NavBar = (): JSX.Element => (
             </a>
           </Link>
           <Link
-            to={{
-              pathname: "/diet/herbivores",
-              state: {
-                categoryKey: "diet",
-                categoryValue: "herbivore",
-              },
-            }}
+            to="/products/diet/herbivore"
           >
             <a
               className="dropdown-item"
@@ -122,35 +87,17 @@ const NavBar = (): JSX.Element => (
             <i className="fas fa-industry"></i> Manufacturer
           </h6>
           <Link
-            to={{
-              pathname: "/manufacturer/ingen",
-              state: {
-                categoryKey: "manufacturer",
-                categoryValue: "ingen",
-              },
-            }}
+            to="/products/manufacturer/ingen"
           >
             <a className="dropdown-item">InGen</a>
           </Link>
           <Link
-            to={{
-              pathname: "/manufacturer/biosyn",
-              state: {
-                categoryKey: "manufacturer",
-                categoryValue: "biosyn",
-              },
-            }}
+            to="/products/manufacturer/biosyn"
           >
             <a className="dropdown-item">Biosyn</a>
           </Link>
           <Link
-            to={{
-              pathname: "/manufacturer/regenesis",
-              state: {
-                categoryKey: "manufacturer",
-                categoryValue: "regenesis",
-              },
-            }}
+            to= "/products/manufacturer/regenesis"
           >
             <a className="dropdown-item">Regenesis</a>
           </Link>
