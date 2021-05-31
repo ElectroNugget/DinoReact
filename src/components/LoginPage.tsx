@@ -3,6 +3,7 @@
  * TODO: Implement state handling???
  */
 import React from "react";
+import Headline from "./Headline"
 
 type LoginPageProps = {
   message: string;
@@ -15,9 +16,7 @@ const LoginPage = ({ message }: LoginPageProps): JSX.Element => (
       <main className="form-signin">
         <div className="container text-center">
           <div className="card-body">
-            <h3 id="message">
-              Hello Guest, please register and provide your name here.
-            </h3>
+            <Headline message=", please register and provide your name here."/>
             <br />
             <div className="form-group">
               <input

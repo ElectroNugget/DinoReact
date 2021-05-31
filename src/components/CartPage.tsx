@@ -3,6 +3,7 @@
  * TODO: Could probably afford to be broken down a little.
  */
 import React from "react";
+import Headline from "./Headline";
 
 type CartPageProps = {
   message: string;
@@ -13,7 +14,7 @@ const CartPage = ({ message }: CartPageProps): JSX.Element => (
     <div className="card">
       <div className="card-header">Your Cart</div>
       <div id="cartBox" className="container text-center">
-        <h3 id="message">Hello Guest, here's your cart.</h3>
+        <Headline message=", here's your cart"/>
         <p>Free shipping for dino orders over 100 tonnes!</p>
 
         <div className="card-body">
