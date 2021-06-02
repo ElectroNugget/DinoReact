@@ -54,7 +54,7 @@ function SmallCard({
           <h6 className="card-title">{manufacturer}</h6>
           <p className="card-text">{price.toLocaleString()} USD</p>
           <UserContext.Consumer>
-            {({ cartCount }) => {
+            {() => {
               return (
                 <button
                   type="button"
