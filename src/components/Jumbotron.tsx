@@ -11,7 +11,6 @@ function Jumbotron({ categoryValue }: JumbotronProps): JSX.Element {
   let result = jumbotronArray.filter(
     (item) => item.displayType === categoryValue
   )[0];
-  console.log("result:", result);
   return (
     <div
       className="jumbotron jumbotron-fluid"

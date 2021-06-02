@@ -35,9 +35,7 @@ const NavBar = (): JSX.Element => (
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
           {/* //FIXME: This path could be better, handle it somehow. */}
-          <Link
-            to="/products"
-          >
+          <Link to="/products">
             <a className="dropdown-item">All Dinosaurs</a>
           </Link>
 
@@ -46,17 +44,26 @@ const NavBar = (): JSX.Element => (
             <i className="fas fa-weight-hanging"></i> Size
           </h6>
           <Link
-            to="/products/size/Small"
+            to={{
+              pathname: "/products/size/Small",
+              state: { catKey: "size", catValue: "Small" },
+            }}
           >
             <a className="dropdown-item">Small</a>
           </Link>
           <Link
-            to="/products/size/Medium"
+            to={{
+              pathname: "/products/size/Medium",
+              state: { catKey: "size", catValue: "Medium" },
+            }}
           >
             <a className="dropdown-item">Medium</a>
           </Link>
           <Link
-            to="/products/size/Large"
+            to={{
+              pathname: "/products/size/Large",
+              state: { catKey: "size", catValue: "Large" },
+            }}
           >
             <a className="dropdown-item">Large</a>
           </Link>
@@ -65,39 +72,46 @@ const NavBar = (): JSX.Element => (
             <i className="fas fa-drumstick-bite"></i> Diet
           </h6>
           <Link
-            to="/products/diet/Carnivore"
+            to={{
+              pathname: "/products/diet/Carnivore",
+              state: { catKey: "diet", catValue: "Carnivore" },
+            }}
           >
-            <a
-              className="dropdown-item"
-            >
-              Carnivores
-            </a>
+            <a className="dropdown-item">Carnivores</a>
           </Link>
           <Link
-            to="/products/diet/Herbivore"
+            to={{
+              pathname: "/products/diet/Herbivore",
+              state: { catKey: "diet", catValue: "Herbivore" },
+            }}
           >
-            <a
-              className="dropdown-item"
-            >
-              Herbivores
-            </a>
+            <a className="dropdown-item">Herbivores</a>
           </Link>
           <div className="dropdown-divider"></div>
           <h6 className="dropdown-header">
             <i className="fas fa-industry"></i> Manufacturer
           </h6>
           <Link
-            to="/products/manufacturer/InGen"
+            to={{
+              pathname: "/products/manufacturer/InGen",
+              state: { catKey: "manufacturer", catValue: "InGen" },
+            }}
           >
             <a className="dropdown-item">InGen</a>
           </Link>
           <Link
-            to="/products/manufacturer/Biosyn"
+            to={{
+              pathname: "/products/manufacturer/Biosyn",
+              state: { catKey: "manufacturer", catValue: "Biosyn" },
+            }}
           >
             <a className="dropdown-item">Biosyn</a>
           </Link>
           <Link
-            to= "/products/manufacturer/Regenesis"
+            to={{
+              pathname: "/products/manufacturer/Regenesis",
+              state: { catKey: "manufacturer", catValue: "Regenesis" },
+            }}
           >
             <a className="dropdown-item">Regenesis</a>
           </Link>

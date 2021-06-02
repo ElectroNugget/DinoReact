@@ -5,7 +5,7 @@
 import { useEffect, useState } from "react";
 import SmallCard from "./SmallCard";
 import Jumbotron from "./Jumbotron";
-import { useParams } from "react-router";
+import { useLocation, useParams } from "react-router";
 
 //Everything but types should be inside the component scope.
 type dinoType = {
@@ -28,23 +28,33 @@ type dinoType = {
     description: string;
 }
 
+type prodDisplayProps = {
+  catKey: string,
+  catValue: string,
+}
+
+
 //Actual component function.
 function ProductDisplay(): JSX.Element {
 
-  let { categoryKey, categoryValue }: params = useParams();
-  
-  type params = {
-    categoryKey: string;
-    categoryValue: string;
-  };
+  // let { categoryKey, categoryValue }: params = useParams();
+
+  // type params = {
+  //   categoryKey: string;
+  //   categoryValue: string;
+  // };
+
+  const location = useLocation<prodDisplayProps>();
+  console.log("Location.state=",location.state);
+  let {catKey, catValue} = location.state;
 
   async function getProducts() {
     let fetchUrl: string;
   
-    if (categoryKey === undefined && categoryValue === undefined) {
+    if (catKey === undefined && catValue === undefined) {
       fetchUrl = `http://localhost:8000/products`;
     } else {
-      fetchUrl = `http://localhost:8000/products/categories/${categoryKey}/${categoryValue}`;
+      fetchUrl = `http://localhost:8000/products/categories/${catKey}/${catValue}`;
     }
   
     await fetch(fetchUrl, {
@@ -54,7 +64,6 @@ function ProductDisplay(): JSX.Element {
       .then((res) => res.json())
       .then((data) => {
         setCardArray(data);
-        console.log("cardArray from fetch:", cardArray);
       })
       .catch((error) => {
         console.log(error);
@@ -65,7 +74,7 @@ function ProductDisplay(): JSX.Element {
   // Declare a new state variable, which we'll call "count"
   const [count, setCount] = useState(0);
   const [cardArray, setCardArray] = useState<dinoType[]>([]); //Implicit understanding????
-  console.log(count);
+
 
 
 
@@ -73,17 +82,17 @@ function ProductDisplay(): JSX.Element {
 
   //No lifecycle methods but I have useEffect Hook
 
-  useEffect(()=>{getProducts()},[]) //Two params, function and array
+  useEffect(()=>{getProducts()},[catKey,catValue]) //Two params, function and array
   //provided function called ONCE, on mount. OR when any of the values inside the array change.
   //If you change something in the array with the given function, infinite loop.
   //Can have many useEffects.
 
-  console.log("proddisplay: category key:", categoryKey);
-  console.log("proddisplay: category value:", categoryValue);
+  console.log("proddisplay: key:", catKey);
+  console.log("proddisplay: value:", catValue);
 
   return (
     <div>
-      <Jumbotron categoryValue={categoryValue ? categoryValue : "all"} />
+      <Jumbotron categoryValue={catKey ? catValue : "all"} />
       <div className="cardDisplay">
         <div className="container text-center">
           <div className="card-deck">
