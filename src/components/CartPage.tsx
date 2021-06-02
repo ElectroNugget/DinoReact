@@ -2,58 +2,73 @@
  * Displays the current cart and checkout options for the user.
  */
 import Headline from "./Headline";
-import "../css/stylesheet.css"
+import { UserContext, useUserContext } from "../UserContext";
+import "../css/stylesheet.css";
 
 const message: string = ", here's your cart.";
 
-const CartPage = (): JSX.Element => (
-  <div className="container" style={{width:"60%"}}>
-    <div className="card">
-      <div className="card-header">Your Cart</div>
-      <div id="cartBox" className="container text-center">
-        <Headline message={message}/>
-        <p>Free shipping for dino orders over 100 tonnes!</p>
+function CartPage(): JSX.Element {
+  const { cartCount, setCartCount } = useUserContext();
 
-        <div className="card-body">
-          <table id="cartTable" className="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Price</th>
-                <th scope="col">Remove</th>
-              </tr>
-            </thead>
-            <tbody id="injectTable"></tbody>
-          </table>
+  function emptyCart() {
+    //Add API stuff here...
+    setCartCount(0);
+  }
 
-          <hr />
-          <h6>Total Price:</h6>
-          <p id="totalPrice"></p>
-          <hr />
+  return (
+    <div className="container" style={{ width: "60%" }}>
+      <div className="card">
+        <div className="card-header">Your Cart</div>
+        <div id="cartBox" className="container text-center">
+          <Headline message={message} />
+          <p>Free shipping for dino orders over 100 tonnes!</p>
 
-          <button
-            type="button"
-            className="btn btn-primary"
-            //    onClick="checkout()"
-          >
-            <i className="far fa-credit-card"></i>
-            Checkout
-          </button>
+          <div className="card-body">
+            <table id="cartTable" className="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Remove</th>
+                </tr>
+              </thead>
+              <tbody id="injectTable"></tbody>
+            </table>
 
-          <button
-            type="button"
-            className="btn btn-secondary"
-            //    onClick="emptyCart()"
-          >
-            <i className="fas fa-trash-alt"></i>
-            Empty Cart
-          </button>
+            <hr />
+            <h6>Total Price:</h6>
+            <p id="totalPrice"></p>
+            <hr />
+
+            <button
+              type="button"
+              className="btn btn-primary"
+              //    onClick="checkout()"
+            >
+              <i className="far fa-credit-card"></i>
+              Checkout
+            </button>
+            <UserContext.Consumer>
+              {() => {
+                return (
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    onClick={() => emptyCart()}
+                  >
+                    <i className="fas fa-trash-alt"></i>
+                    Empty Cart
+                  </button>
+                );
+              }}
+            </UserContext.Consumer>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+}
 
 export default CartPage;

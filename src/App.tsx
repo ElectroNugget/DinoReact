@@ -22,10 +22,11 @@ function App(): JSX.Element {
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [firstName, setFirstName] = useState("");
-  // const [cart, setCart] = useState();
+  const [cartCount, setCartCount] = useState(0);
+
 
   return (
-    <UserContext.Provider value={{ loggedIn, setLoggedIn, firstName, setFirstName }}>
+    <UserContext.Provider value={{ loggedIn, setLoggedIn, firstName, setFirstName, cartCount, setCartCount }}>
       <Router>
         <ScrollToTop/>
         <NavBar />

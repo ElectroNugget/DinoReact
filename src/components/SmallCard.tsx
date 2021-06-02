@@ -2,6 +2,7 @@
  * Renders a small card for display on product display pages.
  */
 import { Link } from "react-router-dom";
+import { UserContext, useUserContext } from "../UserContext";
 import "../css/stylesheet.css";
 
 type SmallCardProps = {
@@ -21,9 +22,11 @@ function SmallCard({
   price,
   imgUrl,
 }: SmallCardProps): JSX.Element {
+  const { cartCount, setCartCount } = useUserContext();
 
   function addToCart() {
-    
+    //Add API stuff here...
+    setCartCount(cartCount + 1);
   }
 
   return (
@@ -50,15 +53,21 @@ function SmallCard({
           </Link>
           <h6 className="card-title">{manufacturer}</h6>
           <p className="card-text">{price.toLocaleString()} USD</p>
-          <button
-            type="button"
-            className="btn btn-info"
-            style={{ width: "70%" }}
-            onClick={addToCart}
-          >
-            <i className="fas fa-cart-plus"></i>
-            &nbsp;Add to Cart
-          </button>
+          <UserContext.Consumer>
+            {({ cartCount }) => {
+              return (
+                <button
+                  type="button"
+                  className="btn btn-info"
+                  style={{ width: "70%" }}
+                  onClick={() => addToCart()}
+                >
+                  <i className="fas fa-cart-plus"></i>
+                  &nbsp;Add to Cart
+                </button>
+              );
+            }}
+          </UserContext.Consumer>
         </div>
       </div>
     </div>
