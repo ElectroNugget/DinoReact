@@ -1,4 +1,4 @@
-import React from "react";
+import "../css/stylesheet.css"
 //FIXME: First time the app loads it renders "Guesty" even though it fetches andrew
 //TODO: How to handle customerID?
 let customerId: number = 1;

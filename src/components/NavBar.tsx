@@ -4,6 +4,7 @@
  * TODO: How does React-Router tie into all this???
  */
 import { Link } from "react-router-dom";
+import "../css/stylesheet.css"
 
 const NavBar = (): JSX.Element => (
   <nav className="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">

@@ -7,6 +7,7 @@ import LargeCard from "./LargeCard";
 import { salesCards } from "../storage/salestorage";
 import { Context } from "../Context";
 import { useContext } from "react";
+import "../css/stylesheet.css"
 
 const message: string = "! Welcome to DinoStore!";
 
@@ -18,10 +19,10 @@ function FrontPage(): JSX.Element {
   return (
     <div>
       <FrontPageCarousel />
-      <div className="container">
+      <div className="container" style={{width:"60%"}}>
         <Headline message={message} />
       </div>
-      <div className="container">
+      <div className="container" style={{width:"60%"}}>
         <div className="row row-cols-1 row-cols-md-2">
           {salesCards.map((card, index) => (
             <div className="col mb-4">

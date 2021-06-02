@@ -1,6 +1,7 @@
 /**
  * Meant to handle any large display of product cards based on a query.
  */
+import "../css/stylesheet.css"
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import SmallCard from "./SmallCard";
@@ -70,8 +71,8 @@ function ProductDisplay(): JSX.Element {
   return (
     <div>
       <Jumbotron categoryValue={catKey ? catValue : "all"} />
-      <div className="cardDisplay">
-        <div className="container text-center">
+      <div className="cardDisplay"  >
+        <div className="container text-center" style={{width:"60%"}}>
           <div className="card-deck">
             {cardArray.map((dino, index) => (
               <SmallCard

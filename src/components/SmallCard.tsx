@@ -2,6 +2,7 @@
  * Renders a small card for display on product display pages.
  */
 import { Link } from "react-router-dom";
+import "../css/stylesheet.css"
 
 type SmallCardProps = {
   key: number;

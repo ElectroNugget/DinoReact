@@ -2,8 +2,8 @@
  * Fairly simple footer that displays on every page.
  * TODO: Make sure it sits at the bottom properly on shorter pages.
  */
-import React from "react";
 import * as st from "./Footer.st"
+import "../css/stylesheet.css"
 
 const Footer = (): JSX.Element => (
   <div>

@@ -1,11 +1,10 @@
 /* Will act as global CSS for now... */
-*{
-  border: 1px solid red !important;
+* {
+  border-color: red 1px solid;
 }
 
 body {
-  background-color: red !important;
-  background-image: url(/images/backgrounds/HexBG.jpg);
+  background-image: url("../images/backgrounds/HexBG.jpg");
   background-repeat: no-repeat;
   background-size: auto;
   height: 100%;
@@ -35,7 +34,6 @@ body {
   justify-content: center;
   align-items: flex-start;
   color: #444444;
-
   border: 1px solid #aaa;
   border-radius: 15px;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
@@ -83,7 +81,6 @@ body {
 }
 
 .jumbotron {
-  background-image: url("../images/ruinsSplash.jpg");
   background-size: cover;
   color: whitesmoke;
 }

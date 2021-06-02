@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "../css/stylesheet.css"
 
 type LargeCardProps = {
   title: string;

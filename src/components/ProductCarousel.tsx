@@ -1,3 +1,4 @@
+import "../css/stylesheet.css"
 
 type productCarouselProps = {
  imageName1:string,

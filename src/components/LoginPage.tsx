@@ -3,11 +3,12 @@
  * TODO: Implement state handling???
  */
 import Headline from "./Headline"
+import "../css/stylesheet.css"
 
 const message: string = ", please register and provide your name here.";
 
 const LoginPage = (): JSX.Element => (
-  <div className="container">
+  <div className="container" style={{width:"60%"}}>
     <div className="card">
       <div className="card-header">Login</div>
       <main className="form-signin">

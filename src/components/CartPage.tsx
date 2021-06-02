@@ -2,11 +2,12 @@
  * Displays the current cart and checkout options for the user.
  */
 import Headline from "./Headline";
+import "../css/stylesheet.css"
 
 const message: string = ", here's your cart.";
 
 const CartPage = (): JSX.Element => (
-  <div className="container">
+  <div className="container" style={{width:"60%"}}>
     <div className="card">
       <div className="card-header">Your Cart</div>
       <div id="cartBox" className="container text-center">

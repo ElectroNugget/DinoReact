@@ -4,6 +4,7 @@
  */
 import { frontPageCarousel } from "../storage/displaystorage";
 
+
 function FrontPageCarousel(): JSX.Element {
   return (
     <div className="index-container">
