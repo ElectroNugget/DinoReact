@@ -21,6 +21,7 @@ function FrontPage(): JSX.Element {
             <div className="col mb-4">
               <LargeCard
                 key={index}
+                state={card.state}
                 linkUrl={card.linkUrl}
                 title={card.title}
                 description={card.description}

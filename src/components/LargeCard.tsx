@@ -7,6 +7,7 @@ type LargeCardProps = {
   imgUrl: string;
   imgAlt: string;
   linkUrl: string;
+  state: { catKey: string; catValue: string } | { productId: number };
 };
 
 function LargeCard({
@@ -16,10 +17,16 @@ function LargeCard({
   imgUrl,
   imgAlt,
   linkUrl,
+  state,
 }: LargeCardProps): JSX.Element {
   return (
     <div className="card">
-      <Link to={linkUrl}>
+      <Link
+        to={{
+          pathname: linkUrl,
+          state: state,
+        }}
+      >
         <img src={imgUrl} className="card-img-top" alt={imgAlt} />
       </Link>
       <div className="card-body">
