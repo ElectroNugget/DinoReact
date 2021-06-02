@@ -2,7 +2,6 @@
  * The login page. Allows the user to register their username to be displayed elsewhere on the site.
  * TODO: Implement state handling???
  */
-import React from "react";
 import Headline from "./Headline"
 
 const message: string = ", please register and provide your name here.";
@@ -32,6 +31,16 @@ const LoginPage = (): JSX.Element => (
                 type="name"
                 className="form-control"
                 placeholder="Last Name"
+                required
+                autoFocus
+              />
+            </div>
+            <div className="form-group">
+              <input
+                id="email"
+                type="email"
+                className="form-control"
+                placeholder="Email"
                 required
                 autoFocus
               />
