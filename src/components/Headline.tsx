@@ -6,6 +6,7 @@ type HeadlineProps = {
 };
 
 function Headline({ message }: HeadlineProps): JSX.Element {
+  //TODO: Need to do something here... Get UID and Fname from API when registering. 
   let customerId: number = 1;
 
   const { firstName, setFirstName } = useUserContext();

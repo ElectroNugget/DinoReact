@@ -1,7 +1,7 @@
 /**
  * Acts as the Navbar for the entire application.
  * TODO: Could probably afford to be broken down a little.
- * TODO: How does React-Router tie into all this???
+ * FIXME: Need to fix ALL DINOSAURS. Breaks atm.
  */
 import { Link } from "react-router-dom";
 import { useUserContext } from "../UserContext";
@@ -9,22 +9,6 @@ import "../css/stylesheet.css";
 
 function NavBar(): JSX.Element {
   const { cartCount } = useUserContext();
-  // async function getUserCart() {
-  //   await fetch(`http://localhost:8000/customers/${customerId}`, {
-  //     method: "GET",
-  //     headers: { "Content-Type": "application/json;charset=utf-8" },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setFirstName(data.firstName);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
-
-  // getUserName();
 
   return (
     <nav className="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
@@ -55,7 +39,7 @@ function NavBar(): JSX.Element {
             <i className="fas fa-dollar-sign"></i> Buy Dinosaurs
           </a>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-            {/* //FIXME: This path could be better, handle it somehow. */}
+            {/* //FIXME: This path BREAKS. Can't view ALL Products RN */}
             <Link to="/products">
               <a className="dropdown-item">All Dinosaurs</a>
             </Link>
