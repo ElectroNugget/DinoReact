@@ -44,7 +44,6 @@ function ProductPage(): JSX.Element {
       .then((res) => res.json())
       .then((data) => {
         setDinoDetails(data);
-        console.log("dinoDetails from fetch for PRODUCT PAGE:", data);
       })
       .catch((error) => {
         console.log(error);

@@ -3,6 +3,7 @@
  * TODO: Figure out how to make Dinosite into a SPA.
  * BJORN: React single page application using Typescript implementing a JavaScript API using Express, as it's OWN NODE.
  */
+import {useState} from "react"
 import NavBar from "./components/NavBar";
 import FrontPage from "./components/FrontPage";
 import CartPage from "./components/CartPage";
@@ -12,15 +13,19 @@ import ProductDisplay from "./components/ProductDisplay";
 import ProductPage from "./components/ProductPage";
 import ScrollToTop from "./util/ScrollToTop"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { ContextProvider } from "./Context";
+// import { ContextProvider } from "./Context";
 import "../src/css/stylesheet.css";
 
-//Maybe get user data here?
+import { UserContext, User } from './UserContext';
 
-//FIXME: Router lets me put in routes that don't exist. Some kind of default in the switch statement for 404?
 function App(): JSX.Element {
+
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  // const [cart, setCart] = useState();
+
   return (
-    <ContextProvider>
+    <UserContext.Provider value={{ loggedIn, setLoggedIn, firstName, setFirstName }}>
       <Router>
         <ScrollToTop/>
         <NavBar />
@@ -37,7 +42,7 @@ function App(): JSX.Element {
         </Switch>
         <Footer />
       </Router>
-    </ContextProvider>
+    </UserContext.Provider>
   );
 }
 

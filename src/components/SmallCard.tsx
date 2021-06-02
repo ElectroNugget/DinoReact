@@ -21,6 +21,11 @@ function SmallCard({
   price,
   imgUrl,
 }: SmallCardProps): JSX.Element {
+
+  function addToCart() {
+    
+  }
+
   return (
     <div className="col-sm-4" style={{ float: "left", marginBottom: "3em" }}>
       <div className="card bg-light text-black" style={{ width: "18rem" }}>
@@ -49,8 +54,7 @@ function SmallCard({
             type="button"
             className="btn btn-info"
             style={{ width: "70%" }}
-            //onClick="addToCart(productId)"
-            //NEED A FUNCTION HERE
+            onClick={addToCart}
           >
             <i className="fas fa-cart-plus"></i>
             &nbsp;Add to Cart

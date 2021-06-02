@@ -1,36 +1,44 @@
-import "../css/stylesheet.css"
-//FIXME: First time the app loads it renders "Guesty" even though it fetches andrew
+import "../css/stylesheet.css";
+import { useUserContext, UserContext } from "../UserContext";
 //TODO: How to handle customerID?
-let customerId: number = 1;
-let customerName: string = "";
-
-async function getUserName() {
-  await fetch(`http://localhost:8000/customers/${customerId}`, {
-    method: "GET",
-    headers: { "Content-Type": "application/json;charset=utf-8" },
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      customerName = data.customerName;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
-
-getUserName();
-
 type HeadlineProps = {
   message: string;
 };
 
 function Headline({ message }: HeadlineProps): JSX.Element {
+  let customerId: number = 1;
+
+  const { firstName, setFirstName } = useUserContext();
+
+  async function getUserName() {
+    await fetch(`http://localhost:8000/customers/${customerId}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json;charset=utf-8" },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setFirstName(data.firstName);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  getUserName();
+
   return (
     <div>
-      <h3>
-        Hello, {customerName? customerName : "Guest"}{message}
-      </h3>
+      <UserContext.Consumer>
+        {({ loggedIn }) => {
+          if (loggedIn) {
+            return <h3>Hello, {firstName}{message}</h3>;
+          }
+          return (
+            <h3>Hello, Guest{message}</h3>
+          );
+        }}
+      </UserContext.Consumer>
     </div>
   );
 }
