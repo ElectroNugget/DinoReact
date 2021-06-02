@@ -1,6 +1,5 @@
 /**
  * Meant to handle any large display of product cards based on a query.
- * TODO: Hook up API
  */
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
@@ -34,6 +33,7 @@ type prodDisplayProps = {
 };
 
 function ProductDisplay(): JSX.Element {
+  //Gets our 'props' from the URL.
   const location = useLocation<prodDisplayProps>();
   console.log("Location.state=", location.state);
   let { catKey, catValue } = location.state;
@@ -60,14 +60,12 @@ function ProductDisplay(): JSX.Element {
       });
   }
 
+  //State management!
   const [cardArray, setCardArray] = useState<dinoType[]>([]);
 
   useEffect(() => {
     getProducts();
   }, [catKey, catValue]);
-
-  console.log("prodDisplay catKey:", catKey);
-  console.log("prodDisplay catValue:", catValue);
 
   return (
     <div>

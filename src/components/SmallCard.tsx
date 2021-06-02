@@ -4,7 +4,7 @@
 import { Link } from "react-router-dom";
 
 type SmallCardProps = {
-  key: number,
+  key: number;
   productId: number;
   productName: string;
   manufacturer: string;
@@ -27,7 +27,12 @@ function SmallCard({
           <img className="card-img-top" src={imgUrl} alt={productName} />
         </a>
         <div className="card-body">
-          <Link to={`/products/${productId}`}>
+          <Link
+            to={{
+              pathname: `/products/${productId}`,
+              state: { productId: productId },
+            }}
+          >
             <h5 className="card-title">{productName}</h5>
           </Link>
           <h6 className="card-title">{manufacturer}</h6>
