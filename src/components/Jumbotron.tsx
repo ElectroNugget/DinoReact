@@ -2,7 +2,7 @@
  * Used as a header for the product display pages.
  */
 import { jumbotronArray } from "../storage/displaystorage";
-import styled from "styled-components";
+import * as st from "./Jumbotron.st"
 import "../css/stylesheet.css";
 
 type JumbotronProps = {
@@ -10,22 +10,12 @@ type JumbotronProps = {
 };
 
 function Jumbotron({ categoryValue }: JumbotronProps): JSX.Element {
-  const Banner = styled.div`
-    height: 300px;
-    color: white;
-    display: flex;
-    text-align: center;
-    padding: 0px 100px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  `;
 
   let result = jumbotronArray.filter(
     (item) => item.displayType === categoryValue
   )[0];
   return (
-    <Banner
+    <st.Banner
       className="jumbotron jumbotron-fluid"
       //Would be nice to get this banner image URL into the styled component but can't find a fix atm.
       style={{
@@ -33,12 +23,12 @@ function Jumbotron({ categoryValue }: JumbotronProps): JSX.Element {
       }}
     >
       <div>
-        <h3 className="display-4">{result.title}</h3>
-        <p id="jumbotronText" className="lead">
+        <st.BannerTitle>{result.title}</st.BannerTitle>
+        <st.BannerText>
           {result.bannerText}
-        </p>
+        </st.BannerText>
       </div>
-    </Banner>
+    </st.Banner>
   );
 }
 

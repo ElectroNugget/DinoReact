@@ -51,13 +51,13 @@ export const jumbotronArray = [
   {
     displayType: "Carnivore",
     title: "Carnivorous Dinosaurs",
-    bannerText: "Your best place to find dinosaurs that might eat people.",
+    bannerText: "The best place to find dinosaurs that might eat people.",
     bannerImage: "Carnivores.jpg",
   },
   {
     displayType: "Herbivore",
     title: "Herbivorous Dinosaurs",
-    bannerText: "Your best place to find dinosaurs that won't eat people.",
+    bannerText: "The best place to find dinosaurs that won't eat people.",
     bannerImage: "Herbivores.jpg",
   },
   {
