@@ -4,6 +4,7 @@
 import { Link } from "react-router-dom";
 
 type SmallCardProps = {
+  key: number,
   productId: number;
   productName: string;
   manufacturer: string;
@@ -12,6 +13,7 @@ type SmallCardProps = {
 };
 
 function SmallCard({
+  key,
   productId,
   productName,
   manufacturer,
