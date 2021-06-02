@@ -17,7 +17,6 @@ function Jumbotron({ categoryValue }: JumbotronProps): JSX.Element {
   return (
     <st.Banner
       className="jumbotron jumbotron-fluid"
-      //Would be nice to get this banner image URL into the styled component but can't find a fix atm.
       style={{
         backgroundImage: `url(/images/banners/${result.bannerImage})`,
       }}
