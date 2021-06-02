@@ -1,7 +1,9 @@
 /* Will act as global CSS for now... */
-* {
-  border-color: red 1px solid;
-}
+/* * {
+  border: red 1px solid;
+} */
+
+/* Bootstrap Dark: #353A40 */
 
 body {
   background-image: url("../images/backgrounds/HexBG.jpg");
