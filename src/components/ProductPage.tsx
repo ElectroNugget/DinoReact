@@ -9,7 +9,7 @@ import ProductCarousel from "./ProductCarousel";
 type productPageProps = {
   productId: number;
 };
-//Everything but types should be inside the component scope.
+
 type dinoType = {
   productId: number;
   productName: string;
@@ -31,13 +31,10 @@ type dinoType = {
 };
 
 function ProductPage(): JSX.Element {
-  // let { id }: productPageProps = useParams();
   const location = useLocation<productPageProps>();
-  console.log("Location.state=", location.state);
   let { productId } = location.state;
 
   async function getDinoData() {
-    console.log("This is the productId", productId);
     await fetch(`http://localhost:8000/products/${productId}`, {
       method: "GET",
       headers: { "Content-Type": "application/json;charset=utf-8" },
@@ -61,7 +58,11 @@ function ProductPage(): JSX.Element {
 
   return (
     <div className="container">
-      <ProductCarousel />
+      <ProductCarousel
+        imageName1={dinoDetails.imageName1!}
+        imageName2={dinoDetails.imageName2!}
+        imageName3={dinoDetails.imageName3!}
+      />
       <div className="productInfoContainer">
         <div className="productName">
           <h2 id="dinosaurName" style={{ display: "inline" }}>
