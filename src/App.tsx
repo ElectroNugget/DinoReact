@@ -10,6 +10,7 @@ import LoginPage from "./components/LoginPage";
 import Footer from "./components/Footer";
 import ProductDisplay from "./components/ProductDisplay";
 import ProductPage from "./components/ProductPage";
+import ScrollToTop from "./util/ScrollToTop"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ContextProvider } from "./Context";
 import "../src/css/stylesheet.css";
@@ -21,6 +22,7 @@ function App(): JSX.Element {
   return (
     <ContextProvider>
       <Router>
+        <ScrollToTop/>
         <NavBar />
         <Switch>
           <Route path="/" exact component={FrontPage} />
