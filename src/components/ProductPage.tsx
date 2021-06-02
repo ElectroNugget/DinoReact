@@ -5,6 +5,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import ProductCarousel from "./ProductCarousel";
+import * as st from "./ProductPage.st";
 
 type productPageProps = {
   productId: number;
@@ -64,19 +65,21 @@ function ProductPage(): JSX.Element {
         imageName3={dinoDetails.imageName3!}
       />
       <div className="productInfoContainer">
-        <div className="productName">
+        <st.ProductName>
           <h2 id="dinosaurName" style={{ display: "inline" }}>
             {dinoDetails.productName}
           </h2>
           <h3 style={{ display: "inline" }}>
-            <em>{dinoDetails.latinName}</em>
+            <em>({dinoDetails.latinName})</em>
           </h3>
-        </div>
-        <div className="productDescription">
+        </st.ProductName>
+
+        <st.ProductDescription>
           <h5>Description:</h5>
           <p>{dinoDetails.description}</p>
-        </div>
-        <div className="productDetails">
+        </st.ProductDescription>
+
+        <st.ProductDetails>
           <h6>Manufacturer: {dinoDetails.manufacturer}</h6>
           <h6>Era: {dinoDetails.era}</h6>
           <h6>DNA Purity: {dinoDetails.dna}</h6>
@@ -86,9 +89,10 @@ function ProductPage(): JSX.Element {
           <h6>Height: {dinoDetails.height}</h6>
           <h6>Weight: {dinoDetails.weight}</h6>
           <h6>Difficulty Rating: {dinoDetails.difficulty}</h6>
-        </div>
+        </st.ProductDetails>
+
         <hr />
-        <div className="productOptions">
+        <st.ProductOptions>
           <h5>Buy Now:</h5>
           <h6>Quantity:</h6>
           <input id="quantityInput" type="number" value="1" min="1" max="10" />
@@ -104,7 +108,7 @@ function ProductPage(): JSX.Element {
           >
             <i className="fas fa-cart-plus"></i> Add to Cart
           </button>
-        </div>
+        </st.ProductOptions>
       </div>
     </div>
   );

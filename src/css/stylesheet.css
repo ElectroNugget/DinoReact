@@ -56,9 +56,7 @@ body {
   width: 50%;
   order: 1;
   min-width: 350px;
-  /* border: 1px solid #aaa; */
   border-radius: 3px;
-  /* box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); */
   padding: 1em;
   margin: 0 0 1em 0;
 }
@@ -67,9 +65,7 @@ body {
   width: 50%;
   order: 1;
   min-width: 350px;
-  /* border: 1px solid #aaa; */
   border-radius: 3px;
-  /* box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); */
   padding: 1em;
   margin: 0 0 1em 0;
 }
