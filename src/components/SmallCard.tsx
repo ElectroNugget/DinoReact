@@ -23,14 +23,14 @@ function SmallCard({
 }: SmallCardProps): JSX.Element {
   return (
     <div className="col-sm-4" style={{ float: "left", marginBottom: "3em" }}>
-      <div className="card bg-dark text-white" style={{ width: "18rem" }}>
+      <div className="card bg-light text-black" style={{ width: "18rem" }}>
         <Link
           to={{
             pathname: `/products/${productId}`,
             state: { productId: productId },
           }}
         >
-          <a className="btn btn-light">
+          <a className="btn btn-dark">
             <img className="card-img-top" src={imgUrl} alt={productName} />
           </a>
         </Link>
