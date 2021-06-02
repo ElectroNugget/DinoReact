@@ -122,11 +122,6 @@ function ProductPage(): JSX.Element {
         >
           <i className="fas fa-cart-plus"></i> Add to Cart
         </button>
-        <Link to={`/products/${fetchArr.productId}`}>
-        <button>
-          ReloadBug
-        </button>
-        </Link>
       </div>
     </div>
     </div>

@@ -3,60 +3,50 @@
  * TODO: Hook up API
  */
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 import SmallCard from "./SmallCard";
 import Jumbotron from "./Jumbotron";
-import { useLocation, useParams } from "react-router";
 
 //Everything but types should be inside the component scope.
 type dinoType = {
-    productId: number;
-    productName: string;
-    latinName: string;
-    imageName1: string;
-    imageName2: string;
-    imageName3: string;
-    manufacturer: string;
-    era: string;
-    dna: string;
-    diet: string;
-    size: string;
-    length: string;
-    height: string;
-    weight: string;
-    difficulty: string;
-    price: number;
-    description: string;
-}
+  productId: number;
+  productName: string;
+  latinName: string;
+  imageName1: string;
+  imageName2: string;
+  imageName3: string;
+  manufacturer: string;
+  era: string;
+  dna: string;
+  diet: string;
+  size: string;
+  length: string;
+  height: string;
+  weight: string;
+  difficulty: string;
+  price: number;
+  description: string;
+};
 
 type prodDisplayProps = {
-  catKey: string,
-  catValue: string,
-}
+  catKey: string;
+  catValue: string;
+};
 
-
-//Actual component function.
 function ProductDisplay(): JSX.Element {
-
-  // let { categoryKey, categoryValue }: params = useParams();
-
-  // type params = {
-  //   categoryKey: string;
-  //   categoryValue: string;
-  // };
-
   const location = useLocation<prodDisplayProps>();
-  console.log("Location.state=",location.state);
-  let {catKey, catValue} = location.state;
+  console.log("Location.state=", location.state);
+  let { catKey, catValue } = location.state;
 
   async function getProducts() {
     let fetchUrl: string;
-  
+
     if (catKey === undefined && catValue === undefined) {
       fetchUrl = `http://localhost:8000/products`;
     } else {
       fetchUrl = `http://localhost:8000/products/categories/${catKey}/${catValue}`;
     }
-  
+
     await fetch(fetchUrl, {
       method: "GET",
       headers: { "Content-Type": "application/json;charset=utf-8" },
@@ -70,25 +60,14 @@ function ProductDisplay(): JSX.Element {
       });
   }
 
-  //You can use hooks here!
-  // Declare a new state variable, which we'll call "count"
-  const [count, setCount] = useState(0);
-  const [cardArray, setCardArray] = useState<dinoType[]>([]); //Implicit understanding????
+  const [cardArray, setCardArray] = useState<dinoType[]>([]);
 
+  useEffect(() => {
+    getProducts();
+  }, [catKey, catValue]);
 
-
-
-  //getProducts(); //Causes an infinite loop
-
-  //No lifecycle methods but I have useEffect Hook
-
-  useEffect(()=>{getProducts()},[catKey,catValue]) //Two params, function and array
-  //provided function called ONCE, on mount. OR when any of the values inside the array change.
-  //If you change something in the array with the given function, infinite loop.
-  //Can have many useEffects.
-
-  console.log("proddisplay: key:", catKey);
-  console.log("proddisplay: value:", catValue);
+  console.log("prodDisplay catKey:", catKey);
+  console.log("prodDisplay catValue:", catValue);
 
   return (
     <div>
@@ -107,7 +86,6 @@ function ProductDisplay(): JSX.Element {
               />
             ))}
           </div>
-          <button onClick={()=>setCount((prevState)=>{return prevState+1})}>Count: {count}</button>
         </div>
       </div>
     </div>

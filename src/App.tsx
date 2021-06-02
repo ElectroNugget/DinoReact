@@ -36,11 +36,6 @@ function App(): JSX.Element {
           path="/products/:categoryKey/:categoryValue"
           component={ProductDisplay}
         />
-        {/* <Route
-          path="/products/size/Medium"
-          exact
-          component={() => <ProductDisplay catKey="size" catValue="Medium" />}
-        /> */}
         <Route path="/products/:id" component={ProductPage} />
       </Switch>
       <Footer />
