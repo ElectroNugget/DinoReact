@@ -2,7 +2,7 @@
  * Acts as the container for an entire product page.
  * TODO: Used to be generated mostly by inject functions and queries. Need to piece it back together.
  */
-import "../css/stylesheet.css"
+import "../css/stylesheet.css";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import ProductCarousel from "./ProductCarousel";
@@ -59,22 +59,21 @@ function ProductPage(): JSX.Element {
   }, [productId]);
 
   return (
-    <div className="container">
+    <div className="container" style={{ width: "60%" }}>
       <ProductCarousel
         imageName1={dinoDetails.imageName1!}
         imageName2={dinoDetails.imageName2!}
         imageName3={dinoDetails.imageName3!}
       />
-      <div className="productInfoContainer">
-        <st.ProductName>
-          <h2 id="dinosaurName" style={{ display: "inline" }}>
-            {dinoDetails.productName}
-          </h2>
-          <h3 style={{ display: "inline" }}>
-            <em>({dinoDetails.latinName})</em>
-          </h3>
-        </st.ProductName>
-
+      <st.ProductName>
+        <h2 id="dinosaurName" style={{ display: "inline" }}>
+          {dinoDetails.productName}
+        </h2>
+        <h3 style={{ display: "inline" }}>
+          <em>({dinoDetails.latinName})</em>
+        </h3>
+      </st.ProductName>
+      <st.ProductInfoContainer>
         <st.ProductDescription>
           <h5>Description:</h5>
           <p>{dinoDetails.description}</p>
@@ -110,7 +109,7 @@ function ProductPage(): JSX.Element {
             <i className="fas fa-cart-plus"></i> Add to Cart
           </button>
         </st.ProductOptions>
-      </div>
+      </st.ProductInfoContainer>
     </div>
   );
 }
