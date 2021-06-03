@@ -4,11 +4,13 @@
  * FIXME: Need to fix ALL DINOSAURS. Breaks atm.
  */
 import { Link } from "react-router-dom";
-import { UserContext, useUserContext } from "../UserContext";
+import { UserContext } from "../UserContext";
 import "../css/stylesheet.css";
+import { useContext } from "react";
 
 function NavBar(): JSX.Element {
-  const { cartCount, loggedIn } = useUserContext();
+  //Standard way of doing it.
+  const { cartCount, loggedIn } = useContext(UserContext); //I AM SUBSCRIBING TO CONTEXT
 
   return (
     <nav className="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">

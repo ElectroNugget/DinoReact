@@ -5,10 +5,13 @@
 import Headline from "./Headline";
 import "../css/stylesheet.css";
 
-import { useUserContext, UserContext } from "../UserContext";
+import { UserContext } from "../UserContext";
+import { useContext } from "react";
 
 function LoginPage(): JSX.Element {
-  const { loggedIn, setLoggedIn } = useUserContext();
+  //Standard way of doing it.
+  //I AM SUBSCRIBING TO USERCONTEXT SO I CAN USE THESE FIELDS IN THIS COMPONENT
+  const { loggedIn, setLoggedIn } = useContext(UserContext); 
   console.log("Are you logged in?", loggedIn);
 
   let message: string;
@@ -28,37 +31,26 @@ function LoginPage(): JSX.Element {
             <div className="card-body">
               <Headline message={message} />
               <br />
-              <UserContext.Consumer>
-                {({ loggedIn }) => {
-                  if (loggedIn) {
-                    return (
-                      <button onClick={() => setLoggedIn(false)}>
-                        Log Out
-                      </button>
-                    );
-                  }
-                  return (
-                    <div>
-                      <div className="form-group">
-                        <input
-                          id="email"
-                          type="email"
-                          className="form-control"
-                          placeholder="Email"
-                          required
-                          autoFocus
-                        />
-                      </div>
-                      <br />
-                      <div>
-                        <button onClick={() => setLoggedIn(true)}>
-                          Log In
-                        </button>
-                      </div>
-                    </div>
-                  );
-                }}
-                </UserContext.Consumer>
+              {loggedIn ? (
+                <button onClick={() => setLoggedIn(false)}>Log Out</button>
+              ) : (
+                <div>
+                  <div className="form-group">
+                    <input
+                      id="email"
+                      type="email"
+                      className="form-control"
+                      placeholder="Email"
+                      required
+                      autoFocus
+                    />
+                  </div>
+                  <br />
+                  <div>
+                    <button onClick={() => setLoggedIn(true)}>Log In</button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </main>

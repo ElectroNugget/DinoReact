@@ -2,8 +2,9 @@
  * Renders a small card for display on product display pages.
  */
 import { Link } from "react-router-dom";
-import { UserContext, useUserContext } from "../UserContext";
+import { UserContext } from "../UserContext";
 import "../css/stylesheet.css";
+import { useContext } from "react";
 
 type SmallCardProps = {
   key: number;
@@ -22,7 +23,9 @@ function SmallCard({
   price,
   imgUrl,
 }: SmallCardProps): JSX.Element {
-  const { cartCount, setCartCount } = useUserContext();
+  //Standard way of doing it.
+  //I AM SUBSCRIBING TO USERCONTEXT SO I CAN USE THESE FIELDS IN THIS COMPONENT
+  const { cartCount, setCartCount } = useContext(UserContext);
 
   function addToCart() {
     //Add API stuff here...

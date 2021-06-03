@@ -1,15 +1,18 @@
+import { useContext } from "react";
 import "../css/stylesheet.css";
-import { useUserContext, UserContext } from "../UserContext";
+import { UserContext } from "../UserContext";
 //TODO: How to handle customerID?
 type HeadlineProps = {
   message: string;
 };
 
 function Headline({ message }: HeadlineProps): JSX.Element {
-  //TODO: Need to do something here... Get UID and Fname from API when registering. 
+  //TODO: Need to do something here... Get UID and fName from API when registering. 
   let customerId: number = 1;
 
-  const { firstName, setFirstName } = useUserContext();
+  //Standard way of doing it.
+  //I AM SUBSCRIBING TO USERCONTEXT SO I CAN USE THESE FIELDS IN THIS COMPONENT
+  const { firstName, setFirstName } = useContext(UserContext); 
 
   async function getUserName() {
     await fetch(`http://localhost:8000/customers/${customerId}`, {
