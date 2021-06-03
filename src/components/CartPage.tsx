@@ -2,13 +2,16 @@
  * Displays the current cart and checkout options for the user.
  */
 import Headline from "./Headline";
-import { UserContext, useUserContext } from "../UserContext";
+import { UserContext } from "../UserContext";
 import "../css/stylesheet.css";
+import { useContext } from "react";
 
 const message: string = ", here's your cart.";
 
 function CartPage(): JSX.Element {
-  const { cartCount, setCartCount } = useUserContext();
+  //Standard way of doing it.
+  //I AM SUBSCRIBING TO USERCONTEXT SO I CAN USE THESE FIELDS IN THIS COMPONENT
+  const { cartCount, setCartCount } = useContext(UserContext);
 
   function emptyCart() {
     //Add API stuff here...

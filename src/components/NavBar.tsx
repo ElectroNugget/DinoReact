@@ -4,11 +4,13 @@
  * FIXME: Need to fix ALL DINOSAURS. Breaks atm.
  */
 import { Link } from "react-router-dom";
-import { useUserContext } from "../UserContext";
+import { UserContext } from "../UserContext";
 import "../css/stylesheet.css";
+import { useContext } from "react";
 
 function NavBar(): JSX.Element {
-  const { cartCount } = useUserContext();
+  //Standard way of doing it.
+  const { cartCount, loggedIn } = useContext(UserContext); //I AM SUBSCRIBING TO CONTEXT
 
   return (
     <nav className="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
@@ -124,18 +126,51 @@ function NavBar(): JSX.Element {
         </li>
       </ul>
       <ul className="navbar-nav ml-auto">
-        <Link to="/login">
-          <li className="nav-item ml-auto">
-            <a className="nav-link">
-              <i className="fas fa-sign-in-alt"></i> Login
-            </a>
-          </li>
-        </Link>
+        <UserContext.Consumer>
+          {({ loggedIn }) => {
+            if (!loggedIn) {
+              return (
+                <>
+                  <Link to="/register">
+                    <li className="nav-item ml-auto">
+                      <a className="nav-link">
+                        <i className="fas fa-user-plus"></i> Register
+                      </a>
+                    </li>
+                  </Link>
+                  <Link to="/login">
+                    <li className="nav-item ml-auto">
+                      <a className="nav-link">
+                        <i className="fas fa-sign-in-alt"></i> Login
+                      </a>
+                    </li>
+                  </Link>
+                </>
+              );
+            }
+            return (
+              <Link to="/login">
+                <li className="nav-item ml-auto">
+                  <a className="nav-link">
+                    <i className="fas fa-sign-in-alt"></i> Logout
+                  </a>
+                </li>
+              </Link>
+            );
+          }}
+        </UserContext.Consumer>
         <Link to="/cart">
           <li className="nav-item ml-auto">
             <a className="nav-link">
               <i className="fas fa-shopping-cart"></i> Cart
-              {cartCount > 0 && <span style={{marginLeft:"5px"}} className="badge badge-warning">{cartCount}</span>}
+              {cartCount > 0 && (
+                <span
+                  style={{ marginLeft: "5px" }}
+                  className="badge badge-warning"
+                >
+                  {cartCount}
+                </span>
+              )}
             </a>
           </li>
         </Link>
