@@ -18,24 +18,25 @@ import "../src/css/stylesheet.css";
 import { UserContextProvider } from "./UserContext";
 
 function App(): JSX.Element {
-
   return (
     <UserContextProvider>
       <Router>
         <ScrollToTop />
         <NavBar />
-        <Switch>
-          <Route path="/" exact component={FrontPage} />
-          <Route path="/cart" component={CartPage} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/register" component={RegisterPage} />
-          <Route path="/products" exact component={ProductDisplay} />
-          <Route
-            path="/products/:categoryKey/:categoryValue"
-            component={ProductDisplay}
-          />
-          <Route path="/products/:id" component={ProductPage} />
-        </Switch>
+        <div style={{ position: "relative", minHeight: "100vh" }}>
+          <Switch>
+            <Route path="/" exact component={FrontPage} />
+            <Route path="/cart" component={CartPage} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/register" component={RegisterPage} />
+            <Route path="/products" exact component={ProductDisplay} />
+            <Route
+              path="/products/:categoryKey/:categoryValue"
+              component={ProductDisplay}
+            />
+            <Route path="/products/:id" component={ProductPage} />
+          </Switch>
+        </div>
         <Footer />
       </Router>
     </UserContextProvider>

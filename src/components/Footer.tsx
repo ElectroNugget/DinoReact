@@ -6,7 +6,10 @@ import * as st from "./Footer.st"
 import "../css/stylesheet.css"
 
 const Footer = (): JSX.Element => (
-  <div>
+  <div style={{ 
+    bottom: "0",
+    width: "100%",
+    height: "2.5rem"            }}>
     <st.FooterBox>
       <st.InnerBox></st.InnerBox>
       <st.InnerBox>

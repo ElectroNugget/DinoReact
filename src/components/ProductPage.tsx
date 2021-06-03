@@ -90,7 +90,10 @@ function ProductPage(): JSX.Element {
   }
 
   return (
-    <div className="container" style={{ width: "60%" }}>
+    <div
+      className="container"
+      style={{ width: "60%", paddingBottom: "2.5rem" }}
+    >
       <ProductCarousel
         imageName1={dinoDetails.imageName1!}
         imageName2={dinoDetails.imageName2!}

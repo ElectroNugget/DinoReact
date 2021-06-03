@@ -23,7 +23,7 @@ function LoginPage(): JSX.Element {
   }
 
   return (
-    <div className="container" style={{ width: "60%" }}>
+    <div className="container" style={{ width: "60%", paddingBottom: "2.5rem" }}>
       <div className="card">
         <div className="card-header">Login</div>
         <main className="form-signin">

@@ -68,7 +68,7 @@ function ProductDisplay(): JSX.Element {
   }, [catKey, catValue]);
 
   return (
-    <div>
+    <div style={{paddingBottom: "2.5rem" }}>
       <Jumbotron categoryValue={catKey ? catValue : "all"} />
       <div className="cardDisplay">
         <div className="container text-center" style={{ width: "60%" }}>

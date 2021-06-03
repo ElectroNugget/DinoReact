@@ -11,7 +11,7 @@ const message: string = "! Welcome to DinoStore!";
 
 function FrontPage(): JSX.Element {
   return (
-    <div>
+    <div style={{ paddingBottom: "2.5rem" }}>
       <FrontPageCarousel />
       <div className="container" style={{width:"60%"}}>
         <Headline message={message} />

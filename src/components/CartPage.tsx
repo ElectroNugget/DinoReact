@@ -53,7 +53,7 @@ function CartPage(): JSX.Element {
     setCart(newCart);
     setCartCount(cartCount - quantity);
   }
-  
+
   //Kind of a weird fix for a weird bug, need to come up with some other solution.
   useEffect(() => {
     checkCart();
@@ -62,7 +62,7 @@ function CartPage(): JSX.Element {
   calculateTotalPrice();
 
   return (
-    <div className="container" style={{ width: "60%" }}>
+    <div className="container" style={{ width: "60%", paddingBottom: "2.5rem" }}>
       <div className="card">
         <div className="card-header">Your Cart</div>
         <div id="cartBox" className="container text-center">
@@ -94,7 +94,7 @@ function CartPage(): JSX.Element {
                         removeItem(dino.productId!, dino.quantity!)
                       }
                     >
-                      Remove
+                      X
                     </button>
                   </td>
                 </tr>
