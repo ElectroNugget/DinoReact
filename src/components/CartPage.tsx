@@ -4,14 +4,14 @@
 import Headline from "./Headline";
 import { UserContext } from "../UserContext";
 import "../css/stylesheet.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 function CartPage(): JSX.Element {
   //Standard way of doing it.
   //I AM SUBSCRIBING TO USERCONTEXT SO I CAN USE THESE FIELDS IN THIS COMPONENT
   const { cart, setCart, setCartCount, cartCount } = useContext(UserContext);
   const message: string = ", here's your cart.";
-  let totalPrice:number = 0;
+  let totalPrice: number = 0;
 
   async function emptyCart() {
     setCart([]);
@@ -19,7 +19,7 @@ function CartPage(): JSX.Element {
   }
 
   async function checkOut() {
-    alert("Thanks for shopping at DinoStore!")
+    alert("Thanks for shopping at DinoStore!");
     console.log("Checking out now.");
     setCart([]);
     setCartCount(0);
@@ -32,21 +32,32 @@ function CartPage(): JSX.Element {
     });
   }
 
-  function calculateTotalPrice() {
-    cart.forEach((dino)=>{
-      totalPrice += dino.price! * dino.quantity!;
-    })
+  //Removes empty objects from the cart if they turn up somehow.
+  function checkCart() {
+    let newCart = cart.filter((value) => Object.keys(value).length !== 0);
+    setCart(newCart);
   }
 
-  function removeItem(Id:number, quantity: number) {
-    console.log("Calling remove item with this id:", Id)
+  function calculateTotalPrice() {
+    cart.forEach((dino) => {
+      totalPrice += dino.price! * dino.quantity!;
+    });
+  }
+
+  function removeItem(Id: number, quantity: number) {
+    console.log("Calling remove item with this id:", Id);
     let newCart = cart;
     let index = newCart.findIndex((dino) => dino.productId === Id);
-    console.log("This is the index",index)
+    console.log("This is the index", index);
     newCart.splice(index, 1);
     setCart(newCart);
-    setCartCount(cartCount-quantity);
+    setCartCount(cartCount - quantity);
   }
+  
+  //Kind of a weird fix for a weird bug, need to come up with some other solution.
+  useEffect(() => {
+    checkCart();
+  }, []);
 
   calculateTotalPrice();
 
@@ -71,7 +82,7 @@ function CartPage(): JSX.Element {
               </thead>
               {cart.map((dino, index) => (
                 <tr>
-                  <th scope="row">{index+1}</th>
+                  <th scope="row">{index + 1}</th>
                   <td>{dino.productName}</td>
                   <td>{dino.quantity}</td>
                   <td>{(dino.price! * dino.quantity!).toLocaleString()} USD</td>
@@ -79,8 +90,12 @@ function CartPage(): JSX.Element {
                     <button
                       type="button"
                       className="btn btn-danger"
-                      onClick={()=>removeItem(dino.productId!, dino.quantity!)}
-                    >Remove</button>
+                      onClick={() =>
+                        removeItem(dino.productId!, dino.quantity!)
+                      }
+                    >
+                      Remove
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -94,18 +109,17 @@ function CartPage(): JSX.Element {
             <button
               type="button"
               className="btn btn-primary"
-              onClick={()=> checkOut()}
+              onClick={() => checkOut()}
             >
               <i className="far fa-credit-card"></i>
               Checkout
             </button>
 
-            <button onClick={() => console.log(cart)}>Check cart</button>
-
             <button
               type="button"
               className="btn btn-secondary"
               onClick={() => emptyCart()}
+              style={{ margin: "5px" }}
             >
               <i className="fas fa-trash-alt"></i>
               Empty Cart

@@ -50,12 +50,12 @@ function SmallCard({
     console.log("Item added to cart:", cart);
     setCartCount(cartCount + 1);
 
-    console.log("Updating the API cart.");
-    await fetch(`http://localhost:8000/customers/${1}/cart`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json;charset=utf-8" },
-      body: JSON.stringify(cart),
-    });
+    // console.log("Updating the API cart.");
+    // await fetch(`http://localhost:8000/customers/${1}/cart`, {
+    //   method: "PUT",
+    //   headers: { "Content-Type": "application/json;charset=utf-8" },
+    //   body: JSON.stringify(cart),
+    // });
   }
 
   return (

@@ -3,7 +3,8 @@
  * TODO: Used to be generated mostly by inject functions and queries. Need to piece it back together.
  */
 import "../css/stylesheet.css";
-import { useEffect, useState } from "react";
+import { UserContext, ProductType } from "../UserContext";
+import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import ProductCarousel from "./ProductCarousel";
 import * as st from "./ProductPage.st";
@@ -36,6 +37,15 @@ function ProductPage(): JSX.Element {
   const location = useLocation<productPageProps>();
   let { productId } = location.state;
 
+  //State management!
+  const [dinoDetails, setDinoDetails] = useState<Partial<dinoType>>({});
+  const [quantity, setQuantity] = useState(1);
+  const { cart, setCart, cartCount, setCartCount } = useContext(UserContext);
+
+  useEffect(() => {
+    getDinoData();
+  }, [productId]);
+
   async function getDinoData() {
     await fetch(`http://localhost:8000/products/${productId}`, {
       method: "GET",
@@ -50,12 +60,34 @@ function ProductPage(): JSX.Element {
       });
   }
 
-  //State management!
-  const [dinoDetails, setDinoDetails] = useState<Partial<dinoType>>({});
+  function changeQuantity() {
+    setQuantity(quantity + 1);
+    console.log("Current quantity", quantity);
+  }
 
-  useEffect(() => {
-    getDinoData();
-  }, [productId]);
+  function findProduct(contentsArray: ProductType[], Id: number) {
+    return contentsArray.findIndex((currProd) => currProd.productId === Id);
+  }
+
+  //Adds an item to the cart by updating Context, and syncing the result with the API.
+  async function addToCart() {
+    setQuantity(quantity);
+    let newCart = cart;
+    let index = findProduct(cart, productId);
+    if (index === -1) {
+      newCart.push({
+        productId: dinoDetails.productId,
+        quantity: quantity,
+        productName: dinoDetails.productName,
+        price: dinoDetails.price,
+      });
+    } else {
+      newCart[index].quantity!++;
+    }
+    setCart(newCart);
+    console.log("Item added to cart:", cart);
+    setCartCount(cartCount + quantity);
+  }
 
   return (
     <div className="container" style={{ width: "60%" }}>
@@ -113,16 +145,18 @@ function ProductPage(): JSX.Element {
         <st.ProductOptions>
           <h5>Buy Now:</h5>
           <h6>Quantity:</h6>
-          <input id="quantityInput" type="number" value="1" min="1" max="10" />
-
+          <input
+            type="number"
+            value={quantity}
+            onChange={(e) => setQuantity(parseInt(e.target.value))}
+          />
+          <br />
           <h6>Price:</h6>
-          <p id="invisiblePrice" style={{ display: "none" }}>
-            {dinoDetails.price}
-          </p>
           <p id="priceDisplay">{dinoDetails.price?.toLocaleString()} USD</p>
           <button
             type="button"
-            className="btn btn-primary" //onClick="addToCart()"
+            className="btn btn-primary"
+            onClick={() => addToCart()}
           >
             <i className="fas fa-cart-plus"></i> Add to Cart
           </button>
