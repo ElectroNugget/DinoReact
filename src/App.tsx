@@ -13,7 +13,7 @@ import ProductDisplay from "./components/ProductDisplay";
 import ProductPage from "./components/ProductPage";
 import ScrollToTop from "./util/ScrollToTop"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import { ContextProvider } from "./Context";
+
 import "../src/css/stylesheet.css";
 
 import { UserContext, User } from './UserContext';
@@ -23,10 +23,10 @@ function App(): JSX.Element {
   const [loggedIn, setLoggedIn] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [cartCount, setCartCount] = useState(0);
-
+  const [UID, setUID] = useState(0);
 
   return (
-    <UserContext.Provider value={{ loggedIn, setLoggedIn, firstName, setFirstName, cartCount, setCartCount }}>
+    <UserContext.Provider value={{ loggedIn, setLoggedIn, firstName, setFirstName, cartCount, setCartCount, UID, setUID }}>
       <Router>
         <ScrollToTop/>
         <NavBar />
