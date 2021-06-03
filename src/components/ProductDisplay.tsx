@@ -41,7 +41,7 @@ function ProductDisplay(): JSX.Element {
   async function getProducts() {
     let fetchUrl: string;
 
-    if (catKey === undefined && catValue === undefined) {
+    if (catKey === "all" && catValue === "all") {
       fetchUrl = `http://localhost:8000/products`;
     } else {
       fetchUrl = `http://localhost:8000/products/categories/${catKey}/${catValue}`;

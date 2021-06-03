@@ -5,17 +5,11 @@ import FrontPageCarousel from "./FrontPageCarousel";
 import Headline from "./Headline";
 import LargeCard from "./LargeCard";
 import { salesCards } from "../storage/salestorage";
-import { Context } from "../Context";
-import { useContext } from "react";
 import "../css/stylesheet.css"
 
 const message: string = "! Welcome to DinoStore!";
 
 function FrontPage(): JSX.Element {
-
-  //Object that contains all the values I've passed to it (user:"")
-  const context = useContext(Context);
-
   return (
     <div>
       <FrontPageCarousel />

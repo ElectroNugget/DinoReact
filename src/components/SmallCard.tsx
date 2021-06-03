@@ -2,7 +2,7 @@
  * Renders a small card for display on product display pages.
  */
 import { Link } from "react-router-dom";
-import { UserContext } from "../UserContext";
+import { UserContext, ProductType } from "../UserContext";
 import "../css/stylesheet.css";
 import { useContext } from "react";
 
@@ -13,23 +13,6 @@ type SmallCardProps = {
   manufacturer: string;
   price: number;
   imgUrl: string;
-};
-
-// [{"productId":1,"quantity":1},]]
-
-// type CartType = {
-//   customerId: number,
-//   contents: Array<ProductType>
-// }
-
-// type ProductType = {
-//   productId: number,
-//   quantity: number,
-// }
-
-type ProductType = {
-  productId?: number;
-  quantity?: number;
 };
 
 function SmallCard({
@@ -45,24 +28,9 @@ function SmallCard({
   const { cartCount, setCartCount, UID, cart, setCart } =
     useContext(UserContext);
 
-  // function isEmpty(obj: object) {
-  //   return Object.keys(obj).length === 0;
-  // }
-
-  // function createCart() {
-
-  // }
-
   function findProduct(contentsArray: ProductType[], Id: number) {
     return contentsArray.findIndex((currProd) => currProd.productId === Id);
   }
-
-  // function find(cartArray, Id) {
-  //   return cartArray.findIndex((currCart) => currCart.customerId === Id);
-  // }
-
-  // Cart structure for reference
-  // [{"customerId":1,"contents":[{"productId":1,"quantity":1}]}]
 
   //Adds an item to the cart by updating Context, and syncing the result with the API.
   async function addToCart(
@@ -74,19 +42,15 @@ function SmallCard({
     let newCart = cart;
     let index = findProduct(cart, productId);
     if (index === -1) {
-      newCart.push({ productId: productId, quantity: quantity });
+      newCart.push({ productId: productId, quantity: quantity, productName: productName, price: price });
     } else {
-      //Bang operator here suppresses typescript error.
       newCart[index].quantity!++;
     }
     setCart(newCart);
     console.log("Item added to cart:", cart);
     setCartCount(cartCount + 1);
 
-    // [{"customerId":1,"contents":[{"productId":1,"quantity":1}]}]
-
     console.log("Updating the API cart.");
-    //Updates the API with the contexts of cart.
     await fetch(`http://localhost:8000/customers/${1}/cart`, {
       method: "PUT",
       headers: { "Content-Type": "application/json;charset=utf-8" },

@@ -3,6 +3,8 @@ import React, { createContext, useState } from "react";
 type ProductType = {
   productId?: number;
   quantity?: number;
+  productName?: string;
+  price?: number;
 };
 
 type User = {
@@ -65,3 +67,4 @@ function UserContextProvider({ children }: PropsType): JSX.Element {
 }
 
 export { UserContext, UserContextProvider };
+export type { ProductType }

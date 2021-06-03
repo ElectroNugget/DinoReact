@@ -42,7 +42,12 @@ function NavBar(): JSX.Element {
           </a>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
             {/* //FIXME: This path BREAKS. Can't view ALL Products RN */}
-            <Link to="/products">
+            <Link
+              to={{
+                pathname: "/products/",
+                state: { catKey: "all", catValue: "all" },
+              }}
+            >
               <a className="dropdown-item">All Dinosaurs</a>
             </Link>
 
