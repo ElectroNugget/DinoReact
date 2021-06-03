@@ -7,11 +7,17 @@ import "../css/stylesheet.css";
 
 import { useUserContext, UserContext } from "../UserContext";
 
-const message: string = ", please register and provide your name here.";
-
 function LoginPage(): JSX.Element {
   const { loggedIn, setLoggedIn } = useUserContext();
   console.log("Are you logged in?", loggedIn);
+
+  let message: string;
+
+  if (loggedIn) {
+    message = ", you are already logged in.";
+  } else {
+    message = ", please login by providing your email here.";
+  }
 
   return (
     <div className="container" style={{ width: "60%" }}>
@@ -22,53 +28,6 @@ function LoginPage(): JSX.Element {
             <div className="card-body">
               <Headline message={message} />
               <br />
-              <div className="form-group">
-                <input
-                  id="fname"
-                  type="name"
-                  className="form-control"
-                  placeholder="First Name"
-                  required
-                  autoFocus
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  id="lname"
-                  type="name"
-                  className="form-control"
-                  placeholder="Last Name"
-                  required
-                  autoFocus
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  id="email"
-                  type="email"
-                  className="form-control"
-                  placeholder="Email"
-                  required
-                  autoFocus
-                />
-              </div>
-              <div className="form-check">
-                <input
-                  type="checkbox"
-                  className="form-check-input"
-                  id="dinoCheck"
-                />
-                <label className="form-check-label" htmlFor="dinoCheck">
-                  I agree that I love dinosaurs
-                </label>
-              </div>
-              <br />
-              <input
-                className="btn btn-primary"
-                type="submit"
-                //onClick="onLogin()"
-                value="Register"
-              />
               <UserContext.Consumer>
                 {({ loggedIn }) => {
                   if (loggedIn) {
@@ -80,17 +39,26 @@ function LoginPage(): JSX.Element {
                   }
                   return (
                     <div>
-                      <button onClick={() => setLoggedIn(true)}>Log In</button>
+                      <div className="form-group">
+                        <input
+                          id="email"
+                          type="email"
+                          className="form-control"
+                          placeholder="Email"
+                          required
+                          autoFocus
+                        />
+                      </div>
+                      <br />
+                      <div>
+                        <button onClick={() => setLoggedIn(true)}>
+                          Log In
+                        </button>
+                      </div>
                     </div>
                   );
                 }}
-              </UserContext.Consumer>
-              <input
-                className="btn btn-danger"
-                type="submit"
-                //onClick="deleteUserDetails()"
-                value="Delete Info"
-              />
+                </UserContext.Consumer>
             </div>
           </div>
         </main>

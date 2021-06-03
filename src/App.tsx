@@ -8,6 +8,7 @@ import NavBar from "./components/NavBar";
 import FrontPage from "./components/FrontPage";
 import CartPage from "./components/CartPage";
 import LoginPage from "./components/LoginPage";
+import RegisterPage from "./components/RegisterPage";
 import Footer from "./components/Footer";
 import ProductDisplay from "./components/ProductDisplay";
 import ProductPage from "./components/ProductPage";
@@ -34,6 +35,7 @@ function App(): JSX.Element {
           <Route path="/" exact component={FrontPage} />
           <Route path="/cart" component={CartPage} />
           <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={RegisterPage} />
           <Route path="/products" exact component={ProductDisplay} />
           <Route
             path="/products/:categoryKey/:categoryValue"
