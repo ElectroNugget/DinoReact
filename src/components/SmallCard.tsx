@@ -17,16 +17,20 @@ type SmallCardProps = {
 
 // [{"customerId":1,"contents":[{"productId":1,"quantity":1}]}]
 
-type CartType = {
-  customerId: number,
-  contents: Array<ProductType>
-}
+// type CartType = {
+//   customerId: number,
+//   contents: Array<ProductType>
+// }
+
+// type ProductType = {
+//   productId: number,
+//   quantity: number,
+// }
 
 type ProductType = {
-  productId: number,
-  quantity: number,
-}
-
+  productId?: number;
+  quantity?: number;
+};
 
 
 function SmallCard({
@@ -49,7 +53,7 @@ function SmallCard({
 
   // }
 
-  function findProduct(contentsArray: Array<object>, Id: number) {
+  function findProduct(contentsArray: ProductType[], Id: number) {
     return contentsArray.findIndex((currProd)=> currProd,productId === Id);
   }
 
@@ -60,17 +64,18 @@ function SmallCard({
   //Adds an item to the cart by updating Context, and syncing the result with the API.
         // [{"customerId":1,"contents":[{"productId":1,"quantity":1}]}]
   
-  async function addToCart(cart: CartType, userId: number, productId: number, quantity: number) {
+  async function addToCart(cart: ProductType[], userId: number, productId: number, quantity: number) {
     console.log("Calling addToCart, cart in this state", cart)
       // Cart structure for reference
-      let index = findProduct(cart.contents, productId);
-      let newCart:CartType = cart;
+      let index = findProduct(cart, productId);
+      let newCart = cart;
       if (index === -1) {
         console.log("Product does not exist in current cart, adding to cart.");
-        newCart.contents.push({"productId":productId, "quantity": quantity});
+        newCart.push({"productId":productId, "quantity": quantity});
       } else {
         console.log("Product does exist in current cart, incrementing count in cart.");
-        newCart.contents[index].quantity++
+        //Bang operator here suppresses typescript error
+        newCart[index].quantity!++
       }
       setCart(newCart);
       console.log("Cart at the end:", cart);
@@ -114,7 +119,7 @@ function SmallCard({
             type="button"
             className="btn btn-info"
             style={{ width: "70%" }}
-            onClick={() => addToCart(cart,UID, productId,1)}
+            onClick={() => addToCart(cart,UID,productId,1)}
           >
             <i className="fas fa-cart-plus"></i>
             &nbsp;Add to Cart

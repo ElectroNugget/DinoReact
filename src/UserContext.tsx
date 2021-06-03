@@ -14,8 +14,8 @@ type User = {
   setCartCount: (number: number) => void;
   UID: number;
   setUID: (number: number) => void;
-  cart: Array<ProductType>;
-  setCart: (cart: Array<ProductType>) => void;
+  cart: ProductType[];
+  setCart: (cart: ProductType[]) => void;
 };
 
 //This is Bjorns method
@@ -28,7 +28,7 @@ const UserContext = createContext<User>({
   setCartCount: (number) => console.warn("Incorrect value, expects a number."),
   UID: 0,
   setUID: (number) => console.warn("Incorrect value, expects a number."),
-  cart: [{}],
+  cart: [],
   setCart: (cart) => console.warn("Incorrect value, expects a number."),
 });
 
