@@ -6,16 +6,70 @@ import Headline from "./Headline";
 import "../css/stylesheet.css";
 
 import { UserContext } from "../UserContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 function RegisterPage(): JSX.Element {
   //Standard way of doing it.
   //I AM SUBSCRIBING TO USERCONTEXT SO I CAN USE THESE FIELDS IN THIS COMPONENT
   const { loggedIn, setLoggedIn } = useContext(UserContext);
+  const [isEmailValid, setIsEmailValid] = useState(false);
+  const [isFNameValid, setIsFNameValid] = useState(false);
+  const [isLNameValid, setIsLNameValid] = useState(false);
+  const [email, setEmail] = useState("");
+  const [fName, setFName] = useState("");
+  const [lName, setLName] = useState("");
+  const [fNameMessage, setFNameMessage] = useState("");
+  const [lNameMessage, setLNameMessage] = useState("");
+  const [emailMessage, setEmailMessage] = useState("");
+
+  //Some regex for checking if names and emails match!
+  const emailRegex = /\S+@\S+\.\S+/;
+  const nameRegex = /[a-zA-Z]{3}[a-zA-Z]*/;
+
+  function validate(event: any, type: string) {
+    const value = event.target.value;
+    switch (type) {
+      case "email":
+        if (emailRegex.test(value)) {
+          setIsEmailValid(true);
+          setEmailMessage("Your email looks good!");
+          setEmail(value);
+        } else {
+          setIsEmailValid(false);
+          setEmailMessage("Please enter a valid email!");
+        }
+        break;
+      case "fName":
+        if (nameRegex.test(value)) {
+          setIsFNameValid(true);
+          setFNameMessage("Your name looks good!");
+          setFName(value);
+        } else {
+          setIsFNameValid(false);
+          setFNameMessage("Please enter a valid name!");
+        }
+        break;
+      case "lName":
+        if (nameRegex.test(value)) {
+          setIsLNameValid(true);
+          setLNameMessage("Your surname looks good!");
+          setLName(value);
+        } else {
+          setIsLNameValid(false);
+          setLNameMessage("Please enter a valid surname!");
+        }
+        break;
+    }
+  }
 
   const message: string = ", please register by providing these details.";
 
   console.log("Are you logged in?", loggedIn);
+
+  function register() {
+    setLoggedIn(true);
+    
+  }
 
   return (
     <div className="container" style={{ width: "60%" }}>
@@ -26,53 +80,74 @@ function RegisterPage(): JSX.Element {
             <div className="card-body">
               <Headline message={message} />
               <br />
-              <div className="form-group">
+              <form id="registrationForm">
+                <div className="container">
+                  <input
+                    type="text"
+                    placeholder="Enter your name"
+                    className="form-control"
+                    onChange={(event) => validate(event, "fName")}
+                    required
+                    autoFocus
+                  />
+                  <div
+                    className={`message ${isFNameValid ? "success" : "error"}`}
+                  >
+                    {fNameMessage}
+                  </div>
+                </div>
+
+                <div className="container">
+                  <input
+                    type="text"
+                    placeholder="Enter your surname"
+                    className="form-control"
+                    onChange={(event) => validate(event, "lName")}
+                    required
+                    autoFocus
+                  />
+                  <div
+                    className={`message ${isLNameValid ? "success" : "error"}`}
+                  >
+                    {lNameMessage}
+                  </div>
+                </div>
+
+                <div className="container">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="form-control"
+                    onChange={(event) => validate(event, "email")}
+                    required
+                    autoFocus
+                  />
+                  <div
+                    className={`message ${isEmailValid ? "success" : "error"}`}
+                  >
+                    {emailMessage}
+                  </div>
+                </div>
+                <div className="form-check">
+                  <input
+                    type="checkbox"
+                    className="form-check-input"
+                    id="dinoCheck"
+                    required
+                  />
+                  <label className="form-check-label" htmlFor="dinoCheck">
+                    I agree that I love dinosaurs
+                  </label>
+                </div>
+                <br />
                 <input
-                  id="fname"
-                  type="name"
-                  className="form-control"
-                  placeholder="First Name"
-                  required
-                  autoFocus
+                  className="btn btn-primary"
+                  disabled={!(isEmailValid && isFNameValid && isLNameValid)}
+                  type="submit"
+                  onClick={() => register()}
+                  value="Register"
                 />
-              </div>
-              <div className="form-group">
-                <input
-                  id="lname"
-                  type="name"
-                  className="form-control"
-                  placeholder="Last Name"
-                  required
-                  autoFocus
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  id="email"
-                  type="email"
-                  className="form-control"
-                  placeholder="Email"
-                  required
-                  autoFocus
-                />
-              </div>
-              <div className="form-check">
-                <input
-                  type="checkbox"
-                  className="form-check-input"
-                  id="dinoCheck"
-                />
-                <label className="form-check-label" htmlFor="dinoCheck">
-                  I agree that I love dinosaurs
-                </label>
-              </div>
-              <br />
-              <input
-                className="btn btn-primary"
-                type="submit"
-                //onClick="onLogin()"
-                value="Register"
-              />
+              </form>
             </div>
           </div>
         </main>

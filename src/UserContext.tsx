@@ -7,6 +7,14 @@ type ProductType = {
   price?: number;
 };
 
+//Same pattern as API
+type UserType = {
+  firstName?: string,
+  lastName?: string,
+  email?: string,
+  customerId?: number,
+}
+
 type User = {
   loggedIn: boolean;
   setLoggedIn: (boolean: boolean) => void;
