@@ -66,15 +66,7 @@ function RegisterPage(): JSX.Element {
 
   const message: string = ", please register by providing these details.";
 
-  console.log("Are you logged in?", loggedIn);
-
   async function register() {
-    // console.log("registering with this user", user);
-    // let newUser = user;
-    // newUser.customerId = 3;
-    // console.log("This is new user", newUser);
-    // setUser(newUser);
-    // console.log("This is now user", user);
     await fetch(`http://localhost:8000/customers/`, {
       method: "POST",
       headers: { "Content-Type": "application/json;charset=utf-8" },
@@ -85,8 +77,6 @@ function RegisterPage(): JSX.Element {
       console.log("This is the reply when registering:", data);
       setUser({firstName: fName, lastName: lName, email: email, customerId: data});
       console.log("this is new User", user)
-      // newUser.customerId = data;
-      // setUser(newUser);
     })
     .catch((error) => {
       console.log(error);
