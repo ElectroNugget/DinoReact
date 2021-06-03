@@ -11,11 +11,19 @@ const message: string = ", here's your cart.";
 function CartPage(): JSX.Element {
   //Standard way of doing it.
   //I AM SUBSCRIBING TO USERCONTEXT SO I CAN USE THESE FIELDS IN THIS COMPONENT
-  const { cartCount, setCartCount } = useContext(UserContext);
+  const { cart, setCart, setCartCount, UID } = useContext(UserContext);
 
-  function emptyCart() {
-    //Add API stuff here...
+  async function emptyCart() {
+    console.log("Emptying cart now.");
+    setCart([]);
     setCartCount(0);
+    console.log("Cart looks like this in Context:", cart);
+    //Puts an empty cart in place of the old one.
+    await fetch(`http://localhost:8000/customers/${1}/cart`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json;charset=utf-8" },
+      body: JSON.stringify([]),
+    });
   }
 
   return (
@@ -53,20 +61,17 @@ function CartPage(): JSX.Element {
               <i className="far fa-credit-card"></i>
               Checkout
             </button>
-            <UserContext.Consumer>
-              {() => {
-                return (
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    onClick={() => emptyCart()}
-                  >
-                    <i className="fas fa-trash-alt"></i>
-                    Empty Cart
-                  </button>
-                );
-              }}
-            </UserContext.Consumer>
+
+            <button onClick={() => console.log(cart)}>Check cart</button>
+
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={() => emptyCart()}
+            >
+              <i className="fas fa-trash-alt"></i>
+              Empty Cart
+            </button>
           </div>
         </div>
       </div>

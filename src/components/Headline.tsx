@@ -7,12 +7,12 @@ type HeadlineProps = {
 };
 
 function Headline({ message }: HeadlineProps): JSX.Element {
-  //TODO: Need to do something here... Get UID and fName from API when registering. 
+  //TODO: Need to do something here... Get UID and fName from API when registering.
   let customerId: number = 1;
 
   //Standard way of doing it.
   //I AM SUBSCRIBING TO USERCONTEXT SO I CAN USE THESE FIELDS IN THIS COMPONENT
-  const { firstName, setFirstName } = useContext(UserContext); 
+  const { firstName, setFirstName } = useContext(UserContext);
 
   async function getUserName() {
     await fetch(`http://localhost:8000/customers/${customerId}`, {
@@ -21,7 +21,6 @@ function Headline({ message }: HeadlineProps): JSX.Element {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setFirstName(data.firstName);
       })
       .catch((error) => {
@@ -36,11 +35,14 @@ function Headline({ message }: HeadlineProps): JSX.Element {
       <UserContext.Consumer>
         {({ loggedIn }) => {
           if (loggedIn) {
-            return <h3>Hello, {firstName}{message}</h3>;
+            return (
+              <h3>
+                Hello, {firstName}
+                {message}
+              </h3>
+            );
           }
-          return (
-            <h3>Hello, Guest{message}</h3>
-          );
+          return <h3>Hello, Guest{message}</h3>;
         }}
       </UserContext.Consumer>
     </div>

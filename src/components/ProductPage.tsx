@@ -79,16 +79,34 @@ function ProductPage(): JSX.Element {
         </st.ProductDescription>
 
         <st.ProductDetails>
-        <h5>Product Stats:</h5>
-          <h6><strong>Manufacturer:</strong> {dinoDetails.manufacturer}</h6>
-          <h6><strong>Era:</strong> {dinoDetails.era}</h6>
-          <h6><strong>DNA Purity:</strong> {dinoDetails.dna}</h6>
-          <h6><strong>Diet:</strong> {dinoDetails.diet}</h6>
-          <h6><strong>Size:</strong> {dinoDetails.size}</h6>
-          <h6><strong>Length:</strong> {dinoDetails.length}</h6>
-          <h6><strong>Height:</strong> {dinoDetails.height}</h6>
-          <h6><strong>Weight:</strong> {dinoDetails.weight}</h6>
-          <h6><strong>Difficulty Rating:</strong> {dinoDetails.difficulty}</h6>
+          <h5>Product Stats:</h5>
+          <h6>
+            <strong>Manufacturer:</strong> {dinoDetails.manufacturer}
+          </h6>
+          <h6>
+            <strong>Era:</strong> {dinoDetails.era}
+          </h6>
+          <h6>
+            <strong>DNA Purity:</strong> {dinoDetails.dna}
+          </h6>
+          <h6>
+            <strong>Diet:</strong> {dinoDetails.diet}
+          </h6>
+          <h6>
+            <strong>Size:</strong> {dinoDetails.size}
+          </h6>
+          <h6>
+            <strong>Length:</strong> {dinoDetails.length}
+          </h6>
+          <h6>
+            <strong>Height:</strong> {dinoDetails.height}
+          </h6>
+          <h6>
+            <strong>Weight:</strong> {dinoDetails.weight}
+          </h6>
+          <h6>
+            <strong>Difficulty Rating:</strong> {dinoDetails.difficulty}
+          </h6>
         </st.ProductDetails>
 
         <hr />
