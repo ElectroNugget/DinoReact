@@ -9,13 +9,13 @@ type ProductType = {
 
 //Same pattern as API
 type UserType = {
-  firstName?: string,
-  lastName?: string,
-  email?: string,
-  customerId?: number,
-}
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  customerId?: number;
+};
 
-type User = {
+type GlobalType = {
   loggedIn: boolean;
   setLoggedIn: (boolean: boolean) => void;
   firstName: string;
@@ -26,10 +26,12 @@ type User = {
   setUID: (number: number) => void;
   cart: ProductType[];
   setCart: (cart: ProductType[]) => void;
+  user: UserType;
+  setUser: (user: UserType) => void;
 };
 
 //This is Bjorns method
-const UserContext = createContext<User>({
+const UserContext = createContext<GlobalType>({
   loggedIn: false,
   setLoggedIn: (boolean) => console.warn("Incorrect value, expects a boolean."),
   firstName: "",
@@ -40,6 +42,8 @@ const UserContext = createContext<User>({
   setUID: (number) => console.warn("Incorrect value, expects a number."),
   cart: [],
   setCart: (cart) => console.warn("Incorrect value, expects a number."),
+  user: {},
+  setUser: (user) => console.warn("Incorrect value, expects a UserType."),
 });
 
 type PropsType = {
@@ -53,6 +57,7 @@ function UserContextProvider({ children }: PropsType): JSX.Element {
   const [cartCount, setCartCount] = useState(0);
   const [UID, setUID] = useState(0);
   const [cart, setCart] = useState([{}]);
+  const [user, setUser] = useState({});
 
   return (
     <UserContext.Provider
@@ -67,6 +72,8 @@ function UserContextProvider({ children }: PropsType): JSX.Element {
         setUID,
         cart,
         setCart,
+        user,
+        setUser,
       }}
     >
       {children}
@@ -75,4 +82,4 @@ function UserContextProvider({ children }: PropsType): JSX.Element {
 }
 
 export { UserContext, UserContextProvider };
-export type { ProductType }
+export type { ProductType, UserType };
