@@ -1,14 +1,21 @@
 import React, { createContext, useState } from "react";
 
+type ProductType = {
+  productId?: number;
+  quantity?: number;
+};
+
 type User = {
   loggedIn: boolean;
-  firstName: string;
-  cartCount: number;
-  UID: number;
   setLoggedIn: (boolean: boolean) => void;
+  firstName: string;
   setFirstName: (name: string) => void;
+  cartCount: number;
   setCartCount: (number: number) => void;
+  UID: number;
   setUID: (number: number) => void;
+  cart: Array<ProductType>;
+  setCart: (cart: Array<ProductType>) => void;
 };
 
 //This is Bjorns method
@@ -20,7 +27,9 @@ const UserContext = createContext<User>({
   cartCount: 0,
   setCartCount: (number) => console.warn("Incorrect value, expects a number."),
   UID: 0,
-  setUID: (number) => console.warn("Help"),
+  setUID: (number) => console.warn("Incorrect value, expects a number."),
+  cart: [{}],
+  setCart: (cart) => console.warn("Incorrect value, expects a number."),
 });
 
 type PropsType = {
@@ -33,6 +42,7 @@ function UserContextProvider({ children }: PropsType): JSX.Element {
   const [firstName, setFirstName] = useState("");
   const [cartCount, setCartCount] = useState(0);
   const [UID, setUID] = useState(0);
+  const [cart, setCart] = useState([{}]);
 
   return (
     <UserContext.Provider
@@ -45,6 +55,8 @@ function UserContextProvider({ children }: PropsType): JSX.Element {
         setCartCount,
         UID,
         setUID,
+        cart,
+        setCart,
       }}
     >
       {children}
@@ -53,4 +65,3 @@ function UserContextProvider({ children }: PropsType): JSX.Element {
 }
 
 export { UserContext, UserContextProvider };
-export type { User, PropsType };
