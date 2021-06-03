@@ -11,7 +11,9 @@ import { useContext, useState } from "react";
 function RegisterPage(): JSX.Element {
   //Standard way of doing it.
   //I AM SUBSCRIBING TO USERCONTEXT SO I CAN USE THESE FIELDS IN THIS COMPONENT
-  const { loggedIn, setLoggedIn } = useContext(UserContext);
+  const { loggedIn, setLoggedIn, user, setUser } = useContext(UserContext);
+
+  //Stateful declarations here. Any chance we can make this smaller?
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [isFNameValid, setIsFNameValid] = useState(false);
   const [isLNameValid, setIsLNameValid] = useState(false);
@@ -66,9 +68,34 @@ function RegisterPage(): JSX.Element {
 
   console.log("Are you logged in?", loggedIn);
 
-  function register() {
+  async function register() {
+    // console.log("registering with this user", user);
+    // let newUser = user;
+    // newUser.customerId = 3;
+    // console.log("This is new user", newUser);
+    // setUser(newUser);
+    // console.log("This is now user", user);
+    await fetch(`http://localhost:8000/customers/`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json;charset=utf-8" },
+      body: JSON.stringify({firstName: fName, lastName: lName, email: email}),
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("This is the reply when registering:", data);
+      setUser({firstName: fName, lastName: lName, email: email, customerId: data});
+      console.log("this is new User", user)
+      // newUser.customerId = data;
+      // setUser(newUser);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
     setLoggedIn(true);
-    
+  }
+
+  function logUser() {
+    console.log("User has these STATS:", user);
   }
 
   return (
@@ -79,6 +106,7 @@ function RegisterPage(): JSX.Element {
           <div className="container text-center">
             <div className="card-body">
               <Headline message={message} />
+              <button onClick={() => logUser()}>CLICK ME</button>
               <br />
               <form id="registrationForm">
                 <div className="container">
@@ -128,7 +156,7 @@ function RegisterPage(): JSX.Element {
                     {emailMessage}
                   </div>
                 </div>
-                <div className="form-check">
+                {/* <div className="form-check">
                   <input
                     type="checkbox"
                     className="form-check-input"
@@ -138,12 +166,11 @@ function RegisterPage(): JSX.Element {
                   <label className="form-check-label" htmlFor="dinoCheck">
                     I agree that I love dinosaurs
                   </label>
-                </div>
+                </div> */}
                 <br />
                 <input
                   className="btn btn-primary"
                   disabled={!(isEmailValid && isFNameValid && isLNameValid)}
-                  type="submit"
                   onClick={() => register()}
                   value="Register"
                 />
