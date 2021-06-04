@@ -16,20 +16,22 @@ const Footer = (): JSX.Element => (
   >
     <st.FooterBox>
       <st.InnerBox></st.InnerBox>
-      <st.InnerBox>
-        Stay Connected:
+      <st.InnerBox style={{textAlign:"center"}}>
+        <strong>Stay Connected:</strong>
+        <hr/>
         <p>
           Join over 50,000 customers who stay up to date with our latest
           releases on these platforms:
         </p>
         <br />
-        <i className="fab fa-facebook"></i>
-        <i className="fab fa-instagram"></i>
-        <i className="fab fa-twitter"></i>
+        <i className="fab fa-facebook" style={{margin: "5px"}}></i>
+        <i className="fab fa-instagram" style={{margin: "5px"}}></i>
+        <i className="fab fa-twitter" style={{margin: "5px"}}></i>
       </st.InnerBox>
       <st.InnerBox>
         <st.ListBox>
           <li>Contact Us:</li>
+          <hr/>
           <li>
             <i className="fas fa-map-marker-alt"></i> Dinosaur Island, Costa
             Rica
