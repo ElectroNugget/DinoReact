@@ -1,4 +1,5 @@
 //Stores data for the product display pages.
+//Could (and should) probably be shifted to the API if necessary, but that would mean writing more REST documentation. :P
 export const frontPageCarousel = [
   {
     title: "Welcome to Dinostore!",

@@ -1,6 +1,10 @@
+/**
+ * HEADLINE:
+ * Displays the username on several pages.
+ */
 import { useContext } from "react";
-import "../css/stylesheet.css";
 import { UserContext } from "../UserContext";
+import "../css/stylesheet.css";
 
 type HeadlineProps = {
   message: string;

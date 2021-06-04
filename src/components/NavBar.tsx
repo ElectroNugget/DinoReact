@@ -1,7 +1,7 @@
 /**
+ * NAVBAR:
  * Acts as the Navbar for the entire application.
- * TODO: Could probably afford to be broken down a little.
- * FIXME: Need to fix ALL DINOSAURS. Breaks atm.
+ * TODO: Could probably afford to be cleaned up a lot. <a> tags from bootstrap make Typescript/React mad.
  */
 import { Link } from "react-router-dom";
 import { UserContext } from "../UserContext";
@@ -9,8 +9,7 @@ import "../css/stylesheet.css";
 import { useContext } from "react";
 
 function NavBar(): JSX.Element {
-  //Standard way of doing it.
-  const { cartCount, loggedIn } = useContext(UserContext); //I AM SUBSCRIBING TO CONTEXT
+  const { cartCount, loggedIn } = useContext(UserContext);
 
   return (
     <nav className="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
@@ -41,7 +40,6 @@ function NavBar(): JSX.Element {
             <i className="fas fa-dollar-sign"></i> Buy Dinosaurs
           </a>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-            {/* //FIXME: This path BREAKS. Can't view ALL Products RN */}
             <Link
               to={{
                 pathname: "/products/",
@@ -131,39 +129,32 @@ function NavBar(): JSX.Element {
         </li>
       </ul>
       <ul className="navbar-nav ml-auto">
-        <UserContext.Consumer>
-          {({ loggedIn }) => {
-            if (!loggedIn) {
-              return (
-                <>
-                  <Link to="/register">
-                    <li className="nav-item ml-auto">
-                      <a className="nav-link">
-                        <i className="fas fa-user-plus"></i> Register
-                      </a>
-                    </li>
-                  </Link>
-                  <Link to="/login">
-                    <li className="nav-item ml-auto">
-                      <a className="nav-link">
-                        <i className="fas fa-sign-in-alt"></i> Login
-                      </a>
-                    </li>
-                  </Link>
-                </>
-              );
-            }
-            return (
-              <Link to="/login">
-                <li className="nav-item ml-auto">
-                  <a className="nav-link">
-                    <i className="fas fa-sign-in-alt"></i> Logout
-                  </a>
-                </li>
-              </Link>
-            );
-          }}
-        </UserContext.Consumer>
+        {!loggedIn ? (
+          <>
+            <Link to="/register">
+              <li className="nav-item ml-auto">
+                <a className="nav-link">
+                  <i className="fas fa-user-plus"></i> Register
+                </a>
+              </li>
+            </Link>
+            <Link to="/login">
+              <li className="nav-item ml-auto">
+                <a className="nav-link">
+                  <i className="fas fa-sign-in-alt"></i> Login
+                </a>
+              </li>
+            </Link>
+          </>
+        ) : (
+          <Link to="/login">
+            <li className="nav-item ml-auto">
+              <a className="nav-link">
+                <i className="fas fa-sign-in-alt"></i> Logout
+              </a>
+            </li>
+          </Link>
+        )}
         <Link to="/cart">
           <li className="nav-item ml-auto">
             <a className="nav-link">

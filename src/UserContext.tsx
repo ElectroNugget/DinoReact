@@ -1,3 +1,8 @@
+/**
+ * USERCONTEXT:
+ * Gives us access to 'global' variables that I can use throughout the app.
+ * TODO: Maybe could be tidied up or broken into >1 contexts? 
+ */
 import React, { createContext, useState } from "react";
 
 type ProductType = {

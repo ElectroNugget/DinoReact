@@ -1,3 +1,4 @@
+// Styled Components for the ProductPage Component.
 import styled from "styled-components";
 
 export const ProductInfoContainer = styled.div`

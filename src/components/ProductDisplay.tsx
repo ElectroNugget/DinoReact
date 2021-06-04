@@ -1,4 +1,5 @@
 /**
+ * PRODUCT DISPLAY:
  * Meant to handle any large display of product cards based on a query.
  */
 import "../css/stylesheet.css";
@@ -7,7 +8,7 @@ import { useLocation } from "react-router";
 import SmallCard from "./SmallCard";
 import Jumbotron from "./Jumbotron";
 
-//Everything but types should be inside the component scope.
+//TODO: Universal type file somewhere might be a good idea.
 type dinoType = {
   productId: number;
   productName: string;

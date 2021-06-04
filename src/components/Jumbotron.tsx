@@ -1,4 +1,5 @@
 /**
+ * JUMBOTRON:
  * Used as a header for the product display pages.
  */
 import { jumbotronArray } from "../storage/displaystorage";

@@ -1,4 +1,4 @@
-// Using styled components for the first time here...
+// Styled Components for the Footer Component.
 import styled from "styled-components";
 
 export const FooterBox = styled.footer`

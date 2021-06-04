@@ -1,6 +1,6 @@
 /**
+ * PRODUCTPAGE:
  * Acts as the container for an entire product page.
- * TODO: Used to be generated mostly by inject functions and queries. Need to piece it back together.
  */
 import "../css/stylesheet.css";
 import { UserContext, ProductType } from "../UserContext";

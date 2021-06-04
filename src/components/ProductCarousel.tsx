@@ -1,3 +1,7 @@
+/**
+ * PRODUCT CAROUSEL:
+ * Loads images on a carousel for the product page.
+ */
 import "../css/stylesheet.css"
 
 type productCarouselProps = {

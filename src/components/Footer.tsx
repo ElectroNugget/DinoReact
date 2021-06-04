@@ -1,15 +1,19 @@
 /**
+ * FOOTER:
  * Fairly simple footer that displays on every page.
- * TODO: Make sure it sits at the bottom properly on shorter pages.
  */
-import * as st from "./Footer.st"
-import "../css/stylesheet.css"
+import * as st from "./Footer.st";
+import "../css/stylesheet.css";
 
 const Footer = (): JSX.Element => (
-  <div style={{ 
-    bottom: "0",
-    width: "100%",
-    height: "2.5rem"            }}>
+  //TODO: Move this styling to a styled component.
+  <div
+    style={{
+      bottom: "0",
+      width: "100%",
+      height: "2.5rem",
+    }}
+  >
     <st.FooterBox>
       <st.InnerBox></st.InnerBox>
       <st.InnerBox>

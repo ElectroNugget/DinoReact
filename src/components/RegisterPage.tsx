@@ -1,6 +1,6 @@
 /**
- * The login page. Allows the user to register their username to be displayed elsewhere on the site.
- * TODO: Implement state handling???
+ * REGISTERPAGE:
+ * The regoster page. Allows the user to register their details to be displayed elsewhere on the site.
  */
 import Headline from "./Headline";
 import "../css/stylesheet.css";
@@ -9,8 +9,6 @@ import { UserContext } from "../UserContext";
 import { useContext, useState } from "react";
 
 function RegisterPage(): JSX.Element {
-  //Standard way of doing it.
-  //I AM SUBSCRIBING TO USERCONTEXT SO I CAN USE THESE FIELDS IN THIS COMPONENT
   const { loggedIn, setLoggedIn, user, setUser } = useContext(UserContext);
 
   //Stateful declarations here. Any chance we can make this smaller?
@@ -66,6 +64,8 @@ function RegisterPage(): JSX.Element {
 
   const message: string = ", please register by providing these details.";
 
+  //TODO: Need to handle creating a cart in the API WHEN the user registers.
+  //Need to carry across the existing anonymous cart if they already have one.
   async function register() {
     await fetch(`http://localhost:8000/customers/`, {
       method: "POST",
@@ -146,17 +146,6 @@ function RegisterPage(): JSX.Element {
                     {emailMessage}
                   </div>
                 </div>
-                {/* <div className="form-check">
-                  <input
-                    type="checkbox"
-                    className="form-check-input"
-                    id="dinoCheck"
-                    required
-                  />
-                  <label className="form-check-label" htmlFor="dinoCheck">
-                    I agree that I love dinosaurs
-                  </label>
-                </div> */}
                 <br />
                 <input
                   className="btn btn-primary"

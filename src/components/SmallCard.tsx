@@ -1,4 +1,5 @@
 /**
+ * SMALLCARD:
  * Renders a small card for display on product display pages.
  */
 import { Link } from "react-router-dom";
@@ -23,8 +24,6 @@ function SmallCard({
   price,
   imgUrl,
 }: SmallCardProps): JSX.Element {
-  //Standard way of doing it.
-  //I AM SUBSCRIBING TO USERCONTEXT SO I CAN USE THESE FIELDS IN THIS COMPONENT
   const { cartCount, setCartCount, UID, cart, setCart } =
     useContext(UserContext);
 
@@ -42,7 +41,12 @@ function SmallCard({
     let newCart = cart;
     let index = findProduct(cart, productId);
     if (index === -1) {
-      newCart.push({ productId: productId, quantity: quantity, productName: productName, price: price });
+      newCart.push({
+        productId: productId,
+        quantity: quantity,
+        productName: productName,
+        price: price,
+      });
     } else {
       newCart[index].quantity!++;
     }

@@ -1,32 +1,27 @@
 /**
- * The login page. Allows the user to register their username to be displayed elsewhere on the site.
- * TODO: Implement state handling???
+ * LOGIN PAGE:
+ * Allows the user to register their username to be displayed elsewhere on the site.
  */
 import Headline from "./Headline";
-import "../css/stylesheet.css";
-
 import { UserContext } from "../UserContext";
 import { useContext, useState } from "react";
+import "../css/stylesheet.css";
 
 function LoginPage(): JSX.Element {
-  //Standard way of doing it.
-  //I AM SUBSCRIBING TO USERCONTEXT SO I CAN USE THESE FIELDS IN THIS COMPONENT
-  const { loggedIn, setLoggedIn, user, setUser } = useContext(UserContext);
+  const { loggedIn, setLoggedIn, user, setUser, cart, setCart, setCartCount } =
+    useContext(UserContext);
   const [email, setEmail] = useState();
 
-  console.log("Are you logged in?", loggedIn);
-
   let message: string;
-
   if (loggedIn) {
     message = ", click to log out.";
   } else {
     message = ", please login by providing your email here.";
   }
 
+  //TODO: Need to check if the anonymous user already has a cart before
+  //replacing it with a cart from login.
   async function login() {
-    console.log("We're sending this email", email);
-    console.log("This is it stringified", JSON.stringify(email));
     await fetch(`http://localhost:8000/customers/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json;charset=utf-8" },
@@ -36,6 +31,7 @@ function LoginPage(): JSX.Element {
       .then((data) => {
         setUser(data);
         setLoggedIn(true);
+        // getCart(data.customerId);
       })
       .catch((error) => {
         console.log(error);
@@ -43,9 +39,45 @@ function LoginPage(): JSX.Element {
       });
   }
 
-  function logout() {
+  //TODO: Need to call these methods and handle waiting for the API to respond before
+  //I finish logging in. However, very slow API calls are making it hard to stress test.
+  async function getCart(id: number) {
+    console.log("calling getCart with this customerId", id);
+    await fetch(`http://localhost:8000/customers/${id}/cart`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json;charset=utf-8" },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setCart(data);
+        let count: number = 0;
+        cart.forEach((dino) => {
+          count += dino.quantity!;
+        });
+        setCartCount(count);
+      });
+  }
+
+  //TODO: Need to call these methods and handle waiting for the cart to save before
+  //I logout. However, very slow API calls are making it hard to stress test.
+  async function logout() {
+    console.log(
+      "Trying to call logout function with this UID",
+      user.customerId
+    );
+    // await fetch(`http://localhost:8000/customers/${user.customerId}/cart`, {
+    //   method: "PUT",
+    //   headers: { "Content-Type": "application/json;charset=utf-8" },
+    //   body: JSON.stringify(cart),
+    // })
+    // .catch((error) => {
+    //   console.log(error);
+    //   alert("Something went wrong with logout!");
+    // });
     setLoggedIn(false);
     setUser({});
+    setCart([]);
+    setCartCount(0);
   }
 
   function updateEmail(event: any) {

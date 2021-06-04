@@ -1,7 +1,6 @@
 /**
+ * APP:
  * Our main launchpad for the whole application!.
- * TODO: Figure out how to make Dinosite into a SPA.
- * BJORN: React single page application using Typescript implementing a JavaScript API using Express, as it's OWN NODE.
  */
 import NavBar from "./components/NavBar";
 import FrontPage from "./components/FrontPage";

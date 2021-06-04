@@ -1,3 +1,7 @@
+/**
+ * LARGE CARD:
+ * Used to display sales on the front page.
+ */
 import { Link } from "react-router-dom";
 import "../css/stylesheet.css"
 

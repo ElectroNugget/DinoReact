@@ -1,9 +1,9 @@
 /**
+ * FRONT PAGE:
  * Displays the provided images and strings as a bootstrap carousel.
- * TODO: Could probably afford to be broken down a little.
  */
 import { frontPageCarousel } from "../storage/displaystorage";
-
+import "../css/stylesheet.css"
 
 function FrontPageCarousel(): JSX.Element {
   return (

@@ -1,15 +1,15 @@
 /**
+ * CARTPAGE:
  * Displays the current cart and checkout options for the user.
  */
 import Headline from "./Headline";
 import { UserContext } from "../UserContext";
-import "../css/stylesheet.css";
 import { useContext, useEffect } from "react";
+import "../css/stylesheet.css";
 
 function CartPage(): JSX.Element {
-  //Standard way of doing it.
-  //I AM SUBSCRIBING TO USERCONTEXT SO I CAN USE THESE FIELDS IN THIS COMPONENT
-  const { cart, setCart, setCartCount, cartCount } = useContext(UserContext);
+  const { cart, setCart, setCartCount, cartCount, user } =
+    useContext(UserContext);
   const message: string = ", here's your cart.";
   let totalPrice: number = 0;
 
@@ -20,22 +20,14 @@ function CartPage(): JSX.Element {
 
   async function checkOut() {
     alert("Thanks for shopping at DinoStore!");
-    console.log("Checking out now.");
     setCart([]);
     setCartCount(0);
-    console.log("Cart looks like this in Context:", cart);
     //Puts an empty cart in place of the old one.
-    await fetch(`http://localhost:8000/customers/${1}/cart`, {
+    await fetch(`http://localhost:8000/customers/${user.customerId}/cart`, {
       method: "PUT",
       headers: { "Content-Type": "application/json;charset=utf-8" },
       body: JSON.stringify([]),
     });
-  }
-
-  //Removes empty objects from the cart if they turn up somehow.
-  function checkCart() {
-    let newCart = cart.filter((value) => Object.keys(value).length !== 0);
-    setCart(newCart);
   }
 
   function calculateTotalPrice() {
@@ -54,7 +46,14 @@ function CartPage(): JSX.Element {
     setCartCount(cartCount - quantity);
   }
 
-  //Kind of a weird fix for a weird bug, need to come up with some other solution.
+  //Removes empty objects from the cart if they turn up somehow.
+  function checkCart() {
+    let newCart = cart.filter((value) => Object.keys(value).length !== 0);
+    setCart(newCart);
+  }
+
+  //Odd fix for an odd bug (cart initializes with an empty object),
+  //need to come up with another solution.
   useEffect(() => {
     checkCart();
   }, []);
@@ -62,7 +61,10 @@ function CartPage(): JSX.Element {
   calculateTotalPrice();
 
   return (
-    <div className="container" style={{ width: "60%", paddingBottom: "2.5rem" }}>
+    <div
+      className="container"
+      style={{ width: "60%", paddingBottom: "2.5rem" }}
+    >
       <div className="card">
         <div className="card-header">Your Cart</div>
         <div id="cartBox" className="container text-center">

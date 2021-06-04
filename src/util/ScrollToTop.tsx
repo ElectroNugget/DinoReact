@@ -1,4 +1,5 @@
 /**
+ * SCROLLTOTOP:
  * Adds the function to scroll to the top of the page whenever router is used.
  */
 import { useEffect } from "react";

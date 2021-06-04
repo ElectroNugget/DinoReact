@@ -1,3 +1,4 @@
+// Styled Components for the Jumbotron Component.
 import styled from "styled-components";
 
 export const Banner = styled.div`
