@@ -62,7 +62,6 @@ function ProductPage(): JSX.Element {
 
   function changeQuantity() {
     setQuantity(quantity + 1);
-    console.log("Current quantity", quantity);
   }
 
   function findProduct(contentsArray: ProductType[], Id: number) {
@@ -85,7 +84,6 @@ function ProductPage(): JSX.Element {
       newCart[index].quantity!++;
     }
     setCart(newCart);
-    console.log("Item added to cart:", cart);
     setCartCount(cartCount + quantity);
   }
 

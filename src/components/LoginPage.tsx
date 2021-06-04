@@ -42,7 +42,6 @@ function LoginPage(): JSX.Element {
   //TODO: Need to call these methods and handle waiting for the API to respond before
   //I finish logging in. However, very slow API calls are making it hard to stress test.
   async function getCart(id: number) {
-    console.log("calling getCart with this customerId", id);
     await fetch(`http://localhost:8000/customers/${id}/cart`, {
       method: "GET",
       headers: { "Content-Type": "application/json;charset=utf-8" },
@@ -61,10 +60,6 @@ function LoginPage(): JSX.Element {
   //TODO: Need to call these methods and handle waiting for the cart to save before
   //I logout. However, very slow API calls are making it hard to stress test.
   async function logout() {
-    console.log(
-      "Trying to call logout function with this UID",
-      user.customerId
-    );
     // await fetch(`http://localhost:8000/customers/${user.customerId}/cart`, {
     //   method: "PUT",
     //   headers: { "Content-Type": "application/json;charset=utf-8" },
@@ -116,11 +111,6 @@ function LoginPage(): JSX.Element {
                   </div>
                 </div>
               )}
-              <button
-                onClick={() => console.log("This is the state of user:", user)}
-              >
-                Check User
-              </button>
             </div>
           </div>
         </main>

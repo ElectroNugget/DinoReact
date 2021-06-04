@@ -37,10 +37,8 @@ function CartPage(): JSX.Element {
   }
 
   function removeItem(Id: number, quantity: number) {
-    console.log("Calling remove item with this id:", Id);
     let newCart = cart;
     let index = newCart.findIndex((dino) => dino.productId === Id);
-    console.log("This is the index", index);
     newCart.splice(index, 1);
     setCart(newCart);
     setCartCount(cartCount - quantity);

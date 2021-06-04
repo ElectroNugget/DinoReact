@@ -31,7 +31,9 @@ function SmallCard({
     return contentsArray.findIndex((currProd) => currProd.productId === Id);
   }
 
-  //Adds an item to the cart by updating Context, and syncing the result with the API.
+  //Adds an item to the cart by updating Context.
+  //DOES NOT sync with API. Calls were bogging the API down, leading to desync.
+  //Instead, would like to update API only when: loggingIn/Out, checkOut/emptyCart
   async function addToCart(
     cart: ProductType[],
     userId: number,
@@ -53,13 +55,6 @@ function SmallCard({
     setCart(newCart);
     console.log("Item added to cart:", cart);
     setCartCount(cartCount + 1);
-
-    // console.log("Updating the API cart.");
-    // await fetch(`http://localhost:8000/customers/${1}/cart`, {
-    //   method: "PUT",
-    //   headers: { "Content-Type": "application/json;charset=utf-8" },
-    //   body: JSON.stringify(cart),
-    // });
   }
 
   return (

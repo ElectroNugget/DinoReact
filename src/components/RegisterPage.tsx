@@ -74,18 +74,12 @@ function RegisterPage(): JSX.Element {
     })
     .then((res) => res.json())
     .then((data) => {
-      console.log("This is the reply when registering:", data);
       setUser({firstName: fName, lastName: lName, email: email, customerId: data});
-      console.log("this is new User", user)
     })
     .catch((error) => {
       console.log(error);
     });
     setLoggedIn(true);
-  }
-
-  function logUser() {
-    console.log("User has these STATS:", user);
   }
 
   return (
@@ -96,7 +90,6 @@ function RegisterPage(): JSX.Element {
           <div className="container text-center">
             <div className="card-body">
               <Headline message={message} />
-              <button onClick={() => logUser()}>CLICK ME</button>
               <br />
               <form id="registrationForm">
                 <div className="container">
