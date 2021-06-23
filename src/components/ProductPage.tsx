@@ -81,7 +81,10 @@ function ProductPage(): JSX.Element {
         price: dinoDetails.price,
       });
     } else {
-      newCart[index].quantity!++;
+      //Handed in Code Below:
+      //newCart[index].quantity!++;
+      //BUGFIX:
+      newCart[index].quantity! += quantity;
     }
     setCart(newCart);
     setCartCount(cartCount + quantity);
@@ -149,7 +152,10 @@ function ProductPage(): JSX.Element {
           <input
             type="number"
             value={quantity}
-            onChange={(e) => setQuantity(parseInt(e.target.value))}
+            // Handed in code below:
+            // onChange={(e) => setQuantity(parseInt(e.target.value))}
+            // BUGFIX:
+            onChange={(e) => parseInt(e.target.value) < 1 ? setQuantity(1) : setQuantity(parseInt(e.target.value))}
           />
           <br />
           <h6>Price:</h6>
